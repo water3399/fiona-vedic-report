@@ -2,519 +2,1767 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Vedic Astrology Ultimate Edition - Fiona</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vedic Astrology Report - Fiona - 1980/07/02</title>
 <style>
   :root {
-    --bg-color: #030407;
-    --surface-1: #10141f;
-    --surface-1-alpha: rgba(16, 20, 31, 0.6);
-    --gold-primary: #D4AF37;
-    --gold-dim: #997A15;
-    --gold-glow: rgba(212, 175, 55, 0.4);
-    --text-main: #E2E8F0;
-    --text-muted: #94A3B8;
-    --accent-blue: #38BDF8;
-    --accent-purple: #C084FC;
-    --accent-red: #F87171;
-    --accent-green: #34D399;
-    --border-color: rgba(212, 175, 55, 0.15);
+    --bg: #0a0e1a;
+    --card: #111827;
+    --card2: #1a2236;
+    --accent: #f59e0b;
+    --accent2: #8b5cf6;
+    --accent3: #06b6d4;
+    --text: #e5e7eb;
+    --muted: #9ca3af;
+    --border: #374151;
+    --good: #10b981;
+    --warn: #ef4444;
+    --fire: #ef4444;
+    --earth: #84cc16;
+    --air: #38bdf8;
+    --water: #818cf8;
   }
-
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  
-  html, body {
-    background-color: var(--bg-color);
-    color: var(--text-main);
-    font-family: 'Noto Sans TC', sans-serif;
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
     line-height: 1.6;
-    width: 100vw;
-    overflow-x: hidden;
   }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
 
-  /* WRAPPER TO FIX IOS SAFARI HORIZONTAL SCROLL BUG */
-  .viewport-wrapper {
-    width: 100%;
-    overflow-x: hidden;
+  /* Header */
+  .header {
+    text-align: center;
+    padding: 50px 20px 30px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #1e1b4b 100%);
+    border-bottom: 2px solid var(--accent);
     position: relative;
-    min-height: 100vh;
+    overflow: hidden;
   }
-
-  /* --- ANIMATED COSMIC BACKGROUND --- */
-  .cosmic-bg {
-    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-    z-index: -10; pointer-events: none; overflow: hidden;
-  }
-  .orb {
-    position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.4;
-    animation: floatOrb 15s infinite alternate ease-in-out;
-  }
-  .orb-1 { width: 60vw; height: 60vw; max-width:400px; max-height:400px; background: rgba(212, 175, 55, 0.12); top: -5%; left: -10%; }
-  .orb-2 { width: 70vw; height: 70vw; max-width:500px; max-height:500px; background: rgba(56, 189, 248, 0.08); bottom: 10%; right: -10%; animation-delay: -5s; }
-  .orb-3 { width: 50vw; height: 50vw; max-width:300px; max-height:300px; background: rgba(192, 132, 252, 0.08); top: 40%; left: 30%; animation-delay: -10s; }
-
-  @keyframes floatOrb {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(3vh, 3vh) scale(1.05); }
-  }
-
-  .stars {
-    position: absolute; top:0; left:0; right:0; bottom:0;
-    background: url('data:image/svg+xml;utf8,<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="0.5" fill="rgba(255,255,255,0.4)"/><circle cx="150" cy="80" r="1" fill="rgba(212,175,55,0.5)"/><circle cx="80" cy="180" r="0.5" fill="rgba(255,255,255,0.3)"/></svg>');
-    opacity: 0.5; animation: twinkle 8s linear infinite alternate;
-  }
-  @keyframes twinkle { 0% { opacity: 0.3; } 100% { opacity: 0.7; } }
-
-  h1, h2, h3, h4, .serif-text { font-family: 'Cinzel', serif; letter-spacing: 1px; }
-
-  .container { 
-    max-width: 1200px; 
-    margin: 0 auto; 
-    padding: 0 5vw; /* Use vw for dynamic padding */
+  .header::before {
+    content: '\2609 \263D \2642 \263F \2643 \2640 \2644 \260A \260B';
+    position: absolute;
+    top: 10px;
     width: 100%;
+    text-align: center;
+    font-size: 24px;
+    letter-spacing: 20px;
+    color: rgba(245, 158, 11, 0.15);
+  }
+  .header h1 {
+    font-size: 2.2em;
+    background: linear-gradient(135deg, var(--accent), #fbbf24, var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+  }
+  .header .subtitle { color: var(--muted); font-size: 1.1em; }
+  .header .birth-info {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+  .header .birth-info span {
+    background: rgba(245,158,11,0.1);
+    border: 1px solid rgba(245,158,11,0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.95em;
   }
 
-  /* --- HERO --- */
-  .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; position: relative; padding: 40px 0; }
-  .hero .label { color: var(--gold-primary); font-size: 0.8em; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; font-weight: 600; opacity: 0; animation: fadeUp 1s 0.2s forwards; }
-  .hero h1 { font-size: clamp(2.5em, 8vw, 4.5em); font-weight: 700; background: linear-gradient(135deg, #FFF 0%, var(--gold-primary) 50%, #FFF 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 10px; text-shadow: 0 0 30px var(--gold-glow); opacity: 0; animation: fadeUp 1s 0.5s forwards; line-height: 1.1; }
-  .hero .motto { font-size: clamp(0.9em, 4vw, 1.2em); color: var(--text-muted); max-width: 600px; margin: 10px auto 30px; opacity: 0; animation: fadeUp 1s 0.8s forwards; }
-  
-  .pill-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; opacity: 0; animation: fadeUp 1s 1.1s forwards; width: 100%; }
-  .pill { background: var(--surface-1-alpha); backdrop-filter: blur(10px); border: 1px solid var(--border-color); padding: 8px 16px; border-radius: 30px; font-size: 0.8em; color: #E2E8F0; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: all 0.3s ease; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  /* --- SCROLL REVEAL --- */
-  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1); }
-  .reveal.active { opacity: 1; transform: translateY(0); }
-
-  /* --- SECTIONS & GLASS BOXES --- */
-  .section { margin: 60px 0; width: 100%; }
-  .section-title { margin-bottom: 25px; border-bottom: 1px solid rgba(212, 175, 55, 0.2); padding-bottom: 10px; position: relative; display: flex; flex-wrap: wrap; align-items: center; gap: 8px;}
-  .section-title::after { content:''; position:absolute; bottom:-1px; left:0; width:60px; height:2px; background:var(--gold-primary); box-shadow: 0 0 10px var(--gold-primary); }
-  .section-title h2 { font-size: clamp(1.4em, 5vw, 1.8em); color: #fff; display: flex; align-items: center; gap: 10px; line-height: 1.2;}
-  .section-title .en { color: var(--gold-dim); font-size: clamp(0.65em, 3vw, 0.8em); letter-spacing: 1px; text-transform: uppercase; margin-left: auto; font-family: 'Noto Sans TC'; }
-
-  .glass-box {
-    background: var(--surface-1-alpha);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--border-color);
+  /* Section */
+  .section {
+    margin: 30px 0;
+    background: var(--card);
     border-radius: 16px;
-    padding: clamp(15px, 4vw, 30px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05);
-    margin-bottom: 20px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .section-header {
+    padding: 16px 24px;
+    background: linear-gradient(90deg, rgba(245,158,11,0.1), transparent);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-header .icon { font-size: 1.5em; }
+  .section-header h2 { font-size: 1.3em; color: var(--accent); }
+  .section-header .en { font-size: 0.8em; color: var(--muted); margin-left: 8px; }
+  .section-body { padding: 24px; }
+
+  /* Grid */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 20px; }
+  @media (max-width: 768px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    background: var(--card2);
+    padding: 10px 14px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--accent);
+    font-size: 0.9em;
+    border-bottom: 2px solid var(--border);
+  }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid rgba(55,65,81,0.5);
+    font-size: 0.95em;
+  }
+  tr:hover td { background: rgba(245,158,11,0.03); }
+  .highlight-row td { background: rgba(245,158,11,0.08) !important; }
+
+  /* South Indian Chart */
+  .chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .chart-label {
+    font-size: 1.1em;
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  /* Info cards */
+  .info-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid var(--border);
+  }
+  .info-card h3 {
+    color: var(--accent2);
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  .info-card p { color: var(--muted); font-size: 0.9em; }
+
+  /* Badge */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 600;
+  }
+  .badge-gold { background: rgba(245,158,11,0.15); color: var(--accent); border: 1px solid rgba(245,158,11,0.3); }
+  .badge-purple { background: rgba(139,92,246,0.15); color: var(--accent2); border: 1px solid rgba(139,92,246,0.3); }
+  .badge-cyan { background: rgba(6,182,212,0.15); color: var(--accent3); border: 1px solid rgba(6,182,212,0.3); }
+  .badge-green { background: rgba(16,185,129,0.15); color: var(--good); border: 1px solid rgba(16,185,129,0.3); }
+  .badge-red { background: rgba(239,68,68,0.15); color: var(--warn); border: 1px solid rgba(239,68,68,0.3); }
+
+  /* Planet symbol colors */
+  .p-sun { color: #f97316; }
+  .p-moon { color: #e2e8f0; }
+  .p-mars { color: #ef4444; }
+  .p-merc { color: #22c55e; }
+  .p-jup { color: #eab308; }
+  .p-ven { color: #f0f0f0; }
+  .p-sat { color: #6366f1; }
+  .p-rahu { color: #38bdf8; }
+  .p-ketu { color: #9ca3af; }
+
+  /* Dasha timeline */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+  .tl-item {
     position: relative;
-    overflow: hidden; /* Important for containing elements */
-    width: 100%;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    background: var(--card2);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+  }
+  .tl-item.current {
+    border-color: var(--accent);
+    background: rgba(245,158,11,0.05);
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .tl-item.current::before { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+  .tl-period { font-size: 0.85em; color: var(--muted); }
+  .tl-planet { font-weight: 700; font-size: 1.05em; }
+
+  /* Progress bar */
+  .progress-bar {
+    height: 8px;
+    background: var(--card2);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  .progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s;
   }
 
-  /* Layouts - Flex/Grid */
-  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 20px; width:100%; }
-  .grid-3 { display: grid; grid-template-columns: 1fr; gap: 15px; width:100%; }
-  .grid-4 { display: grid; grid-template-columns: 1fr; gap: 15px; width:100%; }
-  
-  @media (min-width: 768px) {
-    .grid-2 { grid-template-columns: 1fr 1fr; }
-    .grid-3 { grid-template-columns: repeat(3, 1fr); }
-    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  /* Yoga card */
+  .yoga-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 16px;
+    border-left: 4px solid var(--accent2);
+    margin-bottom: 12px;
   }
-  @media (min-width: 1024px) {
-    .grid-4 { grid-template-columns: repeat(4, 1fr); }
-    .section-title .en { margin-left: auto; display: inline-block; width: auto; }
-  }
-  @media (max-width: 767px) {
-    .section-title .en { margin-left: 0; width: 100%; margin-top: 5px; }
-  }
+  .yoga-card h4 { color: var(--accent2); margin-bottom: 6px; }
+  .yoga-card p { color: var(--muted); font-size: 0.9em; }
 
-  /* --- RESPONSIVE DATA LISTS (BULLETPROOF FLEX LIS TEXT) --- 
-     Replacing all <table> tags entirely to ensure no iPhone overflow 
-  */
-  .data-list { display: flex; flex-direction: column; width: 100%; }
-  .data-list-header { 
-    display: none; /* hidden on mobile, shown on desktop */
+  /* Chart SVG text */
+  .chart-text { font-family: 'Segoe UI', system-ui, sans-serif; }
+
+  /* Analysis block */
+  .analysis-block {
+    background: linear-gradient(135deg, rgba(139,92,246,0.05), rgba(6,182,212,0.05));
+    border: 1px solid rgba(139,92,246,0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin: 12px 0;
   }
-  
-  .data-row {
-    display: flex; flex-direction: column;
-    padding: 12px 0; border-bottom: 1px dotted rgba(255,255,255,0.05);
-    gap: 8px; font-size: 0.9em;
-  }
-  .data-row:last-child { border-bottom: none; }
-  
-  /* Left accent line for rows */
-  .data-row.hl {
-    background: linear-gradient(90deg, rgba(212,175,55,0.08), transparent);
-    border-left: 3px solid var(--gold-primary);
-    padding-left: 10px; border-radius: 4px; border-bottom: none;
+  .analysis-block h4 { color: var(--accent2); margin-bottom: 8px; }
+  .analysis-block ul { padding-left: 20px; }
+  .analysis-block li { color: var(--muted); margin-bottom: 6px; font-size: 0.93em; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    font-size: 0.85em;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
   }
 
-  /* Individual Cell wrappers */
-  .data-cell { display: flex; align-items: flex-start; gap: 10px; word-break: break-word;}
-  .data-label { color: var(--gold-primary); font-family: 'Cinzel', serif; font-size: 0.85em; font-weight: bold; flex-shrink: 0; min-width: 80px; }
-  .data-value { color: #cbd5e1; flex-grow: 1; }
-  
-  @media (min-width: 768px) {
-    .data-list-header { 
-      display: flex; background: rgba(0,0,0,0.4); border-bottom: 1px solid var(--border-color);
-      padding: 10px; color: var(--gold-primary); font-family: 'Cinzel', serif; font-weight: 600; font-size: 0.9em;
-    }
-    .data-row { flex-direction: row; padding: 12px; align-items: center; border-bottom: 1px dotted rgba(255,255,255,0.05); }
-    .data-cell { display: block; flex: 1; gap:0;}
-    .data-label { display: none; } /* Hide mobile labels on desktop */
-    
-    /* Specific widths for desktop */
-    .w-sm { flex: 0.5; }
-    .w-md { flex: 1; }
-    .w-lg { flex: 2; }
+  /* Karaka table special */
+  .karaka-icon { font-size: 1.3em; margin-right: 6px; vertical-align: middle; }
+
+  /* Shadbala bar chart */
+  .shadbala-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 4px 0;
+  }
+  .shadbala-bar .bar-bg {
+    flex: 1;
+    height: 22px;
+    background: var(--card);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+  .shadbala-bar .bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    font-size: 0.75em;
+    font-weight: 700;
+    color: #fff;
+    min-width: 40px;
+  }
+  .shadbala-bar .bar-label {
+    width: 80px;
+    font-size: 0.9em;
+    font-weight: 600;
+  }
+  .shadbala-bar .bar-value {
+    width: 70px;
+    text-align: right;
+    font-size: 0.85em;
+    color: var(--muted);
   }
 
-  /* --- BADGES --- */
-  .badge { display: inline-flex; align-items: center; justify-content: center; padding: 4px 10px; border-radius: 20px; font-size: 0.75em; font-weight: 500; border: 1px solid; background-blend-mode: overlay; white-space: normal; text-align: center; }
-  .b-gold { background: rgba(212,175,55,0.1); color: var(--gold-primary); border-color: rgba(212,175,55,0.4); }
-  .b-blue { background: rgba(56,189,248,0.1); color: var(--accent-blue); border-color: rgba(56,189,248,0.4); }
-  .b-red { background: rgba(248,113,113,0.1); color: var(--accent-red); border-color: rgba(248,113,113,0.4); }
-  .b-green { background: rgba(52,211,153,0.1); color: var(--accent-green); border-color: rgba(52,211,153,0.4); }
+  /* Dosha card */
+  .dosha-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .dosha-icon {
+    font-size: 1.5em;
+    width: 40px;
+    text-align: center;
+  }
+  .dosha-present { border-left: 4px solid var(--warn); }
+  .dosha-absent { border-left: 4px solid var(--good); opacity: 0.7; }
 
-  /* --- SVG & CHARTS --- */
-  .svg-wrap { background: rgba(0,0,0,0.3); padding: 10px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; align-items: center; width: 100%;}
-  .svg-wrap svg { width: 100%; max-width: 300px; height: auto; display: block;}
-  .chart-planet { font-family: 'Noto Sans TC'; font-weight: 700; }
-  
-  .p-sun { fill: #FBBF24; color: #FBBF24; }
-  .p-moon { fill: #F8FAFC; color: #F8FAFC; }
-  .p-mars { fill: #F87171; color: #F87171; }
-  .p-merc { fill: #4ADE80; color: #4ADE80; }
-  .p-jup { fill: #FACC15; color: #FACC15; }
-  .p-ven { fill: #E2E8F0; color: #E2E8F0; }
-  .p-sat { fill: #818CF8; color: #818CF8; }
-  .p-rahu { fill: #22D3EE; color: #22D3EE; }
-  .p-ketu { fill: #9CA3AF; color: #9CA3AF; }
+  /* Remedy card */
+  .remedy-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    margin-bottom: 16px;
+  }
+  .remedy-card h4 { color: var(--accent); margin-bottom: 8px; }
+  .remedy-card ul { padding-left: 18px; }
+  .remedy-card li { color: var(--muted); font-size: 0.9em; margin-bottom: 5px; }
 
-  /* --- DOSHA AND ALERTS --- */
-  .dosha-box { padding: 15px; border-radius: 12px; border-left: 3px solid; margin-bottom: 15px; background: rgba(0,0,0,0.3); display: flex; flex-direction: row; align-items: flex-start; gap: 12px; width:100%;}
-  .dosha-icon { font-size: 1.2em; line-height: 1; flex-shrink: 0; margin-top: 2px;}
-  .dosha-alert { border-color: var(--accent-red); }
-  .dosha-safe { border-color: var(--accent-green); }
+  /* Year prediction cards */
+  .year-card {
+    background: var(--card2);
+    border-radius: 12px;
+    padding: 20px;
+    border: 1px solid var(--border);
+    margin-bottom: 20px;
+  }
+  .year-card h3 {
+    color: var(--accent);
+    font-size: 1.2em;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .year-card .sub-period {
+    background: var(--card);
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin: 8px 0;
+    border-left: 3px solid var(--accent2);
+  }
+  .year-card .sub-period .period-label {
+    font-weight: 600;
+    font-size: 0.9em;
+    color: var(--accent3);
+  }
+  .year-card .sub-period p {
+    color: var(--muted);
+    font-size: 0.88em;
+    margin-top: 4px;
+  }
 
-  /* --- TIMELINE --- */
-  .timeline { border-left: 2px solid rgba(212,175,55,0.2); padding-left: 20px; margin: 15px 0 15px 10px; position: relative; }
-  .timeline::before { content:''; position:absolute; left:-2px; top:0; height:0%; width:2px; background:var(--gold-primary); box-shadow: 0 0 5px var(--gold-primary); transition: height 1s ease-out; }
-  .timeline.scrolled::before { height: 100%; }
-  
-  .tl-node { position: relative; margin-bottom: 25px; background: rgba(0,0,0,0.2); padding: 15px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
-  .tl-node::before { content: ''; position: absolute; left: -29px; top: 20px; width: 14px; height: 14px; border-radius: 50%; background: var(--bg-color); border: 2px solid var(--gold-dim); }
-  
-  .tl-node.active-timeline { border-color: var(--gold-primary); background: linear-gradient(135deg, rgba(212,175,55,0.08), transparent); }
-  .tl-node.active-timeline::before { background: var(--gold-primary); border-color: #FFF; box-shadow: 0 0 10px var(--gold-primary); }
-  .tl-year { color: var(--gold-primary); font-family: 'Cinzel', serif; font-size: 1.1em; font-weight: bold; margin-bottom: 5px;}
+  /* Year timeline visual */
+  .year-timeline {
+    display: flex;
+    gap: 4px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  .year-block {
+    flex: 1;
+    min-width: 140px;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 0.85em;
+    border: 1px solid var(--border);
+  }
+  .year-block h4 {
+    font-size: 1.1em;
+    margin-bottom: 6px;
+  }
+  .year-block p {
+    font-size: 0.8em;
+    color: var(--muted);
+  }
 
-  .footer { text-align: center; padding: 30px 20px; font-family: 'Cinzel', serif; color: var(--text-muted); border-top: 1px solid var(--border-color); margin-top: 20px; font-size: 0.75em; }
-
+  /* Transit table */
+  .transit-highlight { background: rgba(245,158,11,0.12) !important; }
 </style>
 </head>
 <body>
-<div class="viewport-wrapper">
 
-  <!-- Animated Background -->
-  <div class="cosmic-bg">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="stars"></div>
+<!-- ============ HEADER ============ -->
+<div class="header">
+  <h1>Vedic Astrology Birth Chart Report &mdash; Fiona</h1>
+  <div class="subtitle">Jyotish Kundali Analysis / Parashari + Jaimini System / Comprehensive Edition</div>
+  <div class="birth-info">
+    <span>1980 / 07 / 02 (Wednesday &#27700;&#26143;&#26085;)</span>
+    <span>22:06 (UTC+8)</span>
+    <span>Taipei, Taiwan</span>
+    <span>25&deg;01'59"N 121&deg;33'55"E</span>
+    <span>Lahiri Ayanamsa</span>
   </div>
+</div>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="label">Ultimate Vedic Synthesis</div>
-    <h1>FIONA</h1>
-    <div class="motto">Unveiling the Architecture of Your Soul</div>
-    <div class="pill-container">
-      <div class="pill">📅 1980 / 07 / 02</div>
-      <div class="pill">🕒 22:06</div>
-      <div class="pill">📍 Taipei</div>
-      <div class="pill" style="border-color:var(--gold-primary); color:var(--gold-primary);">✨ Lahiri Ayanamsa</div>
-    </div>
+<div class="container">
+
+<!-- ============ SECTION 1: PANCHANGA ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F4C5;</span>
+    <h2>Panchanga &#26310;&#27861;&#20116;&#35201;&#32032;<span class="en">Five Limbs of Time</span></h2>
   </div>
-
-  <div class="container">
-
-    <!-- CHAP 1 & 2: PANCHANGA & CHART -->
-    <div class="section reveal">
-      <div class="section-title">
-        <span class="icon">✨</span>
-        <h2>1. The Cosmic Blueprint</h2>
-        <span class="en">Panchanga & Rasi Chart</span>
-      </div>
-      
-      <div class="grid-2">
-        <!-- Panchanga Flex Box -->
-        <div class="glass-box">
-          <h3 style="color:var(--gold-primary); margin-bottom:15px; font-family:'Cinzel'; font-size:1.1em;">✧ Panchanga</h3>
-          
-          <div class="data-list">
-            <div class="data-row">
-              <div class="data-cell w-sm"><span class="data-label">Day:</span><span class="data-value">Wednesday (Mercury)</span></div>
-            </div>
-            <div class="data-row">
-              <div class="data-cell w-sm"><span class="data-label">Tithi:</span><span class="data-value">Krishna Panchami</span></div>
-            </div>
-            <div class="data-row">
-              <div class="data-cell w-sm"><span class="data-label">Star:</span><span class="data-value">Purva Bhadrapada</span></div>
-            </div>
-            <div class="data-row">
-              <div class="data-cell w-sm"><span class="data-label">Yoga:</span><span class="data-value">Ayushman</span></div>
-            </div>
-          </div>
-
-          <p class="text-muted" style="margin-top:15px; font-size:0.85em; line-height:1.6;">
-            由水星與木星守護的出生時刻。Purva Bhadrapada 是一顆帶有極高洞察力、能遊走於現實物質與深度靈性間的星宿。妳擁有看透表面假象的直覺。
-          </p>
-        </div>
-
-        <!-- SVG RASI -->
-        <div class="glass-box" style="display:flex; justify-content:center; align-items:center; flex-direction:column;">
-          <h3 style="color:var(--gold-primary); margin-bottom:10px; font-family:'Cinzel'; font-size: 1.1em; text-align: center;">RASI KUNDALI (D-1)</h3>
-          <div class="svg-wrap">
-            <svg viewBox="0 0 300 300" preserveAspectRatio="xMidYMid meet">
-              <rect x="0" y="0" width="300" height="300" rx="8" fill="rgba(10,14,26,0.5)" stroke="rgba(212,175,55,0.4)" stroke-width="1.5"/>
-              <line x1="75" y1="0" x2="75" y2="300" stroke="rgba(212,175,55,0.2)"/>
-              <line x1="150" y1="0" x2="150" y2="300" stroke="rgba(212,175,55,0.2)"/>
-              <line x1="225" y1="0" x2="225" y2="300" stroke="rgba(212,175,55,0.2)"/>
-              <line x1="0" y1="75" x2="300" y2="75" stroke="rgba(212,175,55,0.2)"/>
-              <line x1="0" y1="150" x2="300" y2="150" stroke="rgba(212,175,55,0.2)"/>
-              <line x1="0" y1="225" x2="300" y2="225" stroke="rgba(212,175,55,0.2)"/>
-              
-              <rect x="75" y="75" width="150" height="150" fill="rgba(5,6,10,0.9)" stroke="rgba(212,175,55,0.6)"/>
-              <text x="150" y="145" text-anchor="middle" fill="#D4AF37" font-family="'Cinzel'" font-weight="bold" font-size="14">FIONA</text>
-              <text x="150" y="165" text-anchor="middle" fill="#94A3B8" font-size="9">Aquarius Ascendant</text>
-
-              <!-- Lagna -->
-              <rect x="0" y="75" width="75" height="75" fill="rgba(212,175,55,0.2)"/>
-              <text x="37.5" y="110" text-anchor="middle" fill="#D4AF37" font-size="12" font-weight="bold">Asc</text>
-              
-              <!-- Planets -->
-              <text x="37.5" y="125" text-anchor="middle" class="p-moon chart-planet" font-size="12">Mo</text>
-              <text x="37.5" y="140" text-anchor="middle" class="p-ketu chart-planet" font-size="12">Ke</text>
-              <text x="187.5" y="45" text-anchor="middle" class="p-ven chart-planet" font-size="14">Ve</text>
-              <text x="262.5" y="45" text-anchor="middle" class="p-sun chart-planet" font-size="14">Su</text>
-              <text x="262.5" y="105" text-anchor="middle" class="p-merc chart-planet" font-size="12">Me</text>
-              <text x="262.5" y="125" text-anchor="middle" class="p-rahu chart-planet" font-size="12">Ra</text>
-              <text x="262.5" y="180" text-anchor="middle" class="p-jup chart-planet" font-size="12">Ju</text>
-              <text x="262.5" y="200" text-anchor="middle" class="p-sat chart-planet" font-size="12">Sa</text>
-              <text x="262.5" y="262.5" text-anchor="middle" class="p-mars chart-planet" font-size="14">Ma</text>
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CHAP 3: BHAVA ANALYSIS (FLEX BULLETPROOF) -->
-    <div class="section reveal delay-1">
-      <div class="section-title">
-        <span class="icon">🏛️</span>
-        <h2>2. Bhava Architecture</h2>
-        <span class="en">12 Houses & Energies</span>
-      </div>
-      <div class="glass-box">
-        
-        <div class="data-list">
-          <div class="data-list-header">
-            <div class="data-cell w-sm">House</div>
-            <div class="data-cell w-sm">Sign</div>
-            <div class="data-cell w-md">Planets</div>
-            <div class="data-cell w-lg">Significance</div>
-          </div>
-
-          <div class="data-row hl">
-            <div class="data-cell w-sm"><span class="data-label">House</span><span class="data-value"><strong>1st</strong></span></div>
-            <div class="data-cell w-sm"><span class="data-label">Sign</span><span class="data-value">Aquarius</span></div>
-            <div class="data-cell w-md"><span class="data-label">Planets</span><span class="data-value"><span class="p-moon">Moon</span>, <span class="p-ketu">Ketu</span></span></div>
-            <div class="data-cell w-lg"><span class="data-label">Detail</span><span class="data-value">月亮與計都坐鎮命宮。賦予深邃不測的直覺力與獨立性。情緒智商與靈性深度綁定。</span></div>
-          </div>
-
-          <div class="data-row">
-            <div class="data-cell w-sm"><span class="data-label">House</span><span class="data-value"><strong>4th</strong></span></div>
-            <div class="data-cell w-sm"><span class="data-label">Sign</span><span class="data-value">Taurus</span></div>
-            <div class="data-cell w-md"><span class="data-label">Planets</span><span class="data-value"><span class="p-ven">Venus</span></span></div>
-            <div class="data-cell w-lg"><span class="data-label">Detail</span><span class="data-value">金星強勢入廟。保障高度美感、不動產福報與追求平靜的渴望。</span></div>
-          </div>
-
-          <div class="data-row">
-            <div class="data-cell w-sm"><span class="data-label">House</span><span class="data-value"><strong>6th</strong></span></div>
-            <div class="data-cell w-sm"><span class="data-label">Sign</span><span class="data-value">Cancer</span></div>
-            <div class="data-cell w-md"><span class="data-label">Planets</span><span class="data-value"><span class="p-merc">Mercury</span>, <span class="p-rahu">Rahu</span></span></div>
-            <div class="data-cell w-lg"><span class="data-label">Detail</span><span class="data-value">形成逆轉勝瑜伽。在混亂、競爭中擁有找到破口與解決問題的絕佳才智。</span></div>
-          </div>
-
-          <div class="data-row hl">
-            <div class="data-cell w-sm"><span class="data-label">House</span><span class="data-value"><strong>7th</strong></span></div>
-            <div class="data-cell w-sm"><span class="data-label">Sign</span><span class="data-value">Leo</span></div>
-            <div class="data-cell w-md"><span class="data-label">Planets</span><span class="data-value"><span class="p-jup">Jupiter</span>, <span class="p-sat">Saturn</span></span></div>
-            <div class="data-cell w-lg"><span class="data-label">Detail</span><span class="data-value">命主與財主結盟。巨大財源來自於長期合夥關係，具備足夠耐心即能致富。</span></div>
-          </div>
-
-          <div class="data-row">
-            <div class="data-cell w-sm"><span class="data-label">House</span><span class="data-value"><strong>8th</strong></span></div>
-            <div class="data-cell w-sm"><span class="data-label">Sign</span><span class="data-value">Virgo</span></div>
-            <div class="data-cell w-md"><span class="data-label">Planets</span><span class="data-value"><span class="p-mars">Mars</span></span></div>
-            <div class="data-cell w-lg"><span class="data-label">Detail</span><span class="data-value">事業主星遁入8宮！事業軌跡屬非傳統路線，適合幕後操盤、研究或占星。</span></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- CHAP 4 & 5: KARAKAS & MKS -->
+  <div class="section-body">
     <div class="grid-2">
-      <!-- Soul Metrics -->
-      <div class="section reveal" style="margin:0;">
-        <div class="section-title">
-          <span class="icon">🧿</span><h2>3. Soul Metrics</h2>
-          <span class="en">Jaimini Karakas</span>
-        </div>
-        <div class="glass-box" style="height: 100%;">
-          
-          <div class="data-list">
-            <div class="data-row hl">
-              <div class="data-cell w-md"><span class="data-label">Label</span><span class="data-value"><strong>Atma (AK)</strong></span></div>
-              <div class="data-cell w-sm"><span class="data-label">Planet</span><span class="data-value"><span class="p-sat">Saturn</span></span></div>
-              <div class="data-cell w-sm"><span class="data-label">Tag</span><span class="data-value"><span class="badge b-gold">靈魂任務</span></span></div>
-            </div>
-            <div class="data-row">
-              <div class="data-cell w-md"><span class="data-label">Label</span><span class="data-value">Amatya (AmK)</span></div>
-              <div class="data-cell w-sm"><span class="data-label">Planet</span><span class="data-value"><span class="p-ven">Venus</span></span></div>
-              <div class="data-cell w-sm"><span class="data-label">Tag</span><span class="data-value"><span class="badge b-green">事業天賦</span></span></div>
-            </div>
-            <div class="data-row">
-              <div class="data-cell w-md"><span class="data-label">Label</span><span class="data-value">Bhratri (BK)</span></div>
-              <div class="data-cell w-sm"><span class="data-label">Planet</span><span class="data-value"><span class="p-sun">Sun</span></span></div>
-              <div class="data-cell w-sm"><span class="data-label">Tag</span><span class="data-value"><span class="badge b-blue">指導者</span></span></div>
-            </div>
-          </div>
-
-          <div style="margin-top:20px; border-left:3px solid var(--gold-primary); padding-left:12px;">
-            <h4 style="color:var(--gold-primary); margin-bottom:5px; font-size:0.95em;">✧ Atma Karaka (土星)</h4>
-            <p class="text-muted" style="font-size:0.85em;">土星是妳此生的終極靈魂導師。學會放手控制、擁抱延遲與無私的服務，是靈魂解脫的鑰匙。</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Vulnerabilities -->
-      <div class="section reveal delay-1" style="margin:0;">
-        <div class="section-title">
-          <span class="icon">🛡️</span><h2>4. Vulnerabilities</h2>
-          <span class="en">MKS & Flaws</span>
-        </div>
-        <div class="glass-box" style="height: 100%;">
-          
-          <h4 style="color:#FFF; margin-bottom:10px; font-size:0.95em;">✧ Marana Karaka Sthana</h4>
-          <div class="dosha-box dosha-safe">
-            <div class="dosha-icon" style="color:var(--accent-green);">✓</div>
-            <div>
-              <strong style="color:var(--accent-green); font-size:0.9em; display:block; margin-bottom:4px;">NO MKS DETECTED</strong>
-              <p style="font-size:0.8em; color:#cbd5e1; margin:0;">全身掃描完畢，命盤中沒有任何行星落入毀滅宮位。這賦予了極強的心理抗壓性。</p>
-            </div>
-          </div>
-
-          <h4 style="color:#FFF; margin-bottom:10px; font-size:0.95em;">✧ Kuja Dosha</h4>
-          <div class="dosha-box dosha-alert">
-            <div class="dosha-icon" style="color:var(--accent-red);">!</div>
-            <div>
-              <strong style="color:var(--accent-red); font-size:0.9em; display:block; margin-bottom:4px;">Manglik 剋夫星成立</strong>
-              <p style="font-size:0.8em; color:#cbd5e1; margin:0;">火星位於第8宮。可能導致親密關係衝突。化解法：晚婚(28歲後)或尋找帶火星特質伴侶即可完美抵銷。</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
+      <table>
+        <tr><th>&#38917;&#30446;</th><th>&#20839;&#23481;</th></tr>
+        <tr class="highlight-row"><td>Day &#26143;&#26399;</td><td><strong>Wednesday &#26143;&#26399;&#19977;&#65288;Budhavar / &#27700;&#26143;&#26085;&#65289;</strong></td></tr>
+        <tr><td>Vara Lord &#26143;&#26399;&#20027;&#26143;</td><td><span class="p-merc">&#9791; Mercury</span> &mdash; &#33287;&#20986;&#29983;&#26085;&#30340;&#27700;&#26143;&#33021;&#37327;&#30452;&#25509;&#30456;&#36899;</td></tr>
+        <tr><td>Sunrise &#26085;&#20986;</td><td>05:11:45</td></tr>
+        <tr><td>Sunset &#26085;&#33853;</td><td>18:43:28</td></tr>
+      </table>
+      <table>
+        <tr><th>Panchanga &#35201;&#32032;</th><th>Tattwa</th><th>&#20540;</th></tr>
+        <tr>
+          <td><span class="badge badge-cyan">Tithi &#38512;&#26310;&#26085;</span></td>
+          <td>Jala &#27700;</td>
+          <td>Krishna Paksha Panchami<br><small style="color:var(--muted)">&#19979;&#24358;&#20116;&#26085;&#65288;Vaahinivaasini&#65289;</small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-purple">Nakshatra &#26143;&#23487;</span></td>
+          <td>Vayu &#39080;</td>
+          <td>Shatabhisha&#65288;&#30334;&#37291;&#26143;&#23487;&#65289;Quarter 2<br><small style="color:var(--muted)">&#20027;&#31649;&#65306;Rahu &#9738; &middot; 56.82% Balance</small></td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-gold">Yoga</span></td>
+          <td>Akasha &#31354;</td>
+          <td>Ayushman&#65288;Ketu/Rahu&#65289;&mdash; &#38263;&#22781;&#29788;&#20285;</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-green">Karana</span></td>
+          <td>Prithvi &#22320;</td>
+          <td>Taitila&#65288;Mercury &#9791;&#65289;</td>
+        </tr>
+        <tr>
+          <td><span class="badge badge-red">Vara &#26143;&#26399;</span></td>
+          <td>Prithvi &#22320;</td>
+          <td>Budhavar&#65288;Mercury &#9791;&#65289;</td>
+        </tr>
+      </table>
     </div>
-
-    <!-- CHAP 8: YOGAS -->
-    <div class="section reveal">
-      <div class="section-title">
-        <span class="icon">👑</span><h2>5. Royal Alignments</h2>
-        <span class="en">Astrological Yogas</span>
-      </div>
-      <div class="grid-3">
-        <div class="glass-box" style="border-top: 3px solid var(--gold-primary);">
-          <h3 style="color:var(--gold-primary); font-size:1.1em; margin-bottom:4px;">Malavya Yoga</h3>
-          <p style="color:#FFF; font-size:0.75em; font-weight:bold; margin-bottom:8px;">Pancha Mahapurusha</p>
-          <p class="text-muted" style="font-size:0.8em; margin:0;">金星強勢入廟於第4宮。保障了頂級審美、家庭生活與不動產福報。</p>
-        </div>
-        <div class="glass-box" style="border-top: 3px solid var(--accent-blue);">
-          <h3 style="color:var(--accent-blue); font-size:1.1em; margin-bottom:4px;">Viparita Yoga</h3>
-          <p style="color:#FFF; font-size:0.75em; font-weight:bold; margin-bottom:8px;">Sarala (逆轉勝)</p>
-          <p class="text-muted" style="font-size:0.8em; margin:0;">8宮主落6宮。能在極度混亂或危機中找到破口，展現卓越能力。</p>
-        </div>
-        <div class="glass-box" style="border-top: 3px solid var(--accent-green);">
-          <h3 style="color:var(--accent-green); font-size:1.1em; margin-bottom:4px;">Dhana Yoga</h3>
-          <p style="color:#FFF; font-size:0.75em; font-weight:bold; margin-bottom:8px;">Wealth Configuration</p>
-          <p class="text-muted" style="font-size:0.8em; margin:0;">1主與11主結合於7宮。巨大財源綁定於長期合夥關係，耐心是關鍵。</p>
-        </div>
-      </div>
+    <div class="analysis-block" style="margin-top:16px;">
+      <h4>&#20986;&#29983;&#26085;&#29305;&#21029;&#24847;&#32681; &mdash; Wednesday &#27700;&#26143;&#26085;</h4>
+      <ul>
+        <li><strong>Mercury &#20027;&#31649;&#28317;&#36890;&#12289;&#23416;&#32722;&#12289;&#20998;&#26512;</strong>&#65306;&#20986;&#29983;&#22312;&#27700;&#26143;&#26085;&#30340;&#20154;&#22825;&#29983;&#20855;&#20633;&#35486;&#35328;&#22825;&#36070;&#21644;&#20998;&#26512;&#33021;&#21147;</li>
+        <li><strong>&#38617;&#37325; Mercury &#36899;&#32080;</strong>&#65306;Karana &#20063;&#26159; Mercury&#65288;Taitila&#65289;&#65292;&#21152;&#24375;&#20102;&#26234;&#24935;&#33021;&#37327;</li>
+        <li><strong>Mercury Maha Dasha &#38283;&#22987;</strong>&#65306;2025&#24180;9&#26376;&#36914;&#20837; Mercury &#22823;&#36939;&#65292;&#33287;&#20986;&#29983;&#26085;&#33021;&#37327;&#23436;&#32654;&#21628;&#25033;</li>
+      </ul>
     </div>
-
-    <!-- CHAP 11: TIMELINE -->
-    <div class="section reveal">
-      <div class="section-title">
-        <span class="icon">⏳</span><h2>6. Destiny Timeline</h2>
-        <span class="en">Dasha 2025-2030</span>
-      </div>
-      <div class="glass-box">
-        <div class="timeline" id="dasha-timeline">
-          
-          <div class="tl-node">
-            <div class="tl-year">2025-2026 : Final Stretch</div>
-            <p style="color:#cbd5e1; font-weight:600; font-size:0.85em; margin-bottom:4px;">Saturn/Rahu & Jupiter</p>
-            <p class="text-muted" style="font-size:0.85em; margin:0;">長達19年的土星大運即將結束。這是清理與打包的階段，會有想要轉換跑道的衝動。</p>
-          </div>
-
-          <div class="tl-node active-timeline">
-            <div class="tl-year" style="color:#FFF;">2027 ★ SHIFT</div>
-            <p style="color:var(--gold-primary); font-weight:600; font-size:0.9em; margin-bottom:4px;">Mercury Mahadasha!</p>
-            <p style="color:#cbd5e1; font-size:0.85em; margin:0;"><strong>能量翻轉！</strong>土星重擔解除，水星激活逆轉勝瑜伽。過去的障礙都能輕鬆化解。</p>
-          </div>
-
-          <div class="tl-node" style="border:1px solid var(--gold-primary); box-shadow:0 0 15px rgba(212,175,55,0.1);">
-            <div class="tl-year">2030 ★★★ GOLDEN</div>
-            <p style="color:var(--gold-primary); font-weight:600; font-size:0.9em; margin-bottom:4px;">Mercury / Venus</p>
-            <p class="text-muted" style="color:#FFF; font-size:0.85em; margin:0;"><strong>十年顛峰！</strong>水星與金星為摯友。將在財富、不動產與愛情上帶來豐盛體驗。</p>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-  </div> <!-- End Container -->
-
-  <div class="footer">
-    <p>ULTIMATE VEDIC ASTROLOGY SYNTHESIS • FIONA</p>
-    <p style="font-family:'Noto Sans TC'; font-size:0.8em; margin-top:5px;">Generated with Neural Architecture</p>
   </div>
+</div>
 
-</div> <!-- End viewport-wrapper -->
+<!-- ============ SECTION 2: RASI CHART D-1 ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F52E;</span>
+    <h2>Rasi Chart D-1 &#26412;&#21629;&#30436;<span class="en">Birth Chart / South Indian Style</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="grid-2">
+      <!-- South Indian Chart SVG -->
+      <div class="chart-container">
+        <div class="chart-label">Rasi Chart&#65288;D-1&#65289;</div>
+        <svg width="420" height="420" viewBox="0 0 420 420">
+          <rect x="0" y="0" width="420" height="420" rx="8" fill="#1a2236" stroke="#374151" stroke-width="2"/>
+          <rect x="10" y="10" width="400" height="400" fill="none" stroke="#4b5563" stroke-width="1.5"/>
+          <line x1="110" y1="10" x2="110" y2="410" stroke="#4b5563" stroke-width="1"/>
+          <line x1="210" y1="10" x2="210" y2="410" stroke="#4b5563" stroke-width="1"/>
+          <line x1="310" y1="10" x2="310" y2="410" stroke="#4b5563" stroke-width="1"/>
+          <line x1="10" y1="110" x2="410" y2="110" stroke="#4b5563" stroke-width="1"/>
+          <line x1="10" y1="210" x2="410" y2="210" stroke="#4b5563" stroke-width="1"/>
+          <line x1="10" y1="310" x2="410" y2="310" stroke="#4b5563" stroke-width="1"/>
+          <rect x="110" y="110" width="200" height="200" fill="#111827" stroke="#4b5563" stroke-width="1"/>
 
-<script>
-  const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-        if(entry.target.querySelector('.timeline')) {
-          setTimeout(() => entry.target.querySelector('.timeline').classList.add('scrolled'), 200);
-        }
-      }
-    });
-  }, observerOptions);
+          <!-- Center info -->
+          <text x="210" y="185" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="700" class="chart-text">Fiona</text>
+          <text x="210" y="205" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700" class="chart-text">1980/07/02</text>
+          <text x="210" y="225" text-anchor="middle" fill="#f59e0b" font-size="13" font-weight="700" class="chart-text">22:06 Taipei</text>
+          <text x="210" y="250" text-anchor="middle" fill="#9ca3af" font-size="11" class="chart-text">Rasi (D-1)</text>
 
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-</script>
+          <!-- Sign name labels (South Indian fixed: Pisces top-left, Aries next, etc.) -->
+          <text x="60" y="28" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Pi &#9811; 12</text>
+          <text x="160" y="28" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Ar &#9800; 1</text>
+          <text x="260" y="28" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Ta &#9801; 2</text>
+          <text x="360" y="28" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Ge &#9802; 3</text>
 
+          <text x="60" y="128" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Aq &#9810; 11</text>
+          <text x="360" y="128" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Cn &#9803; 4</text>
+
+          <text x="60" y="228" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Cp &#9809; 10</text>
+          <text x="360" y="228" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Le &#9804; 5</text>
+
+          <text x="60" y="328" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Sg &#9808; 9</text>
+          <text x="160" y="328" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Sc &#9807; 8</text>
+          <text x="260" y="328" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Li &#9806; 7</text>
+          <text x="360" y="328" text-anchor="middle" fill="#6b7280" font-size="10" class="chart-text">Vi &#9805; 6</text>
+
+          <!-- PLANETS IN HOUSES -->
+          <!-- Aquarius (Aq/11) - ASC, Moon = LAGNA (House 1) -->
+          <rect x="12" y="112" width="96" height="96" fill="rgba(245,158,11,0.08)" stroke="none"/>
+          <text x="60" y="155" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="700" class="chart-text">&#8466; ASC</text>
+          <text x="60" y="175" text-anchor="middle" fill="#e2e8f0" font-size="14" font-weight="700" class="chart-text">&#9790; Mo</text>
+
+          <!-- Taurus (Ta/2) - Venus R (own sign!) = House 4 -->
+          <text x="260" y="55" text-anchor="middle" fill="#f0f0f0" font-size="14" font-weight="700" class="chart-text">&#9792; Ve&#8477; &#9733;</text>
+
+          <!-- Gemini (Ge/3) - Sun = House 5 -->
+          <text x="360" y="55" text-anchor="middle" fill="#f97316" font-size="14" font-weight="700" class="chart-text">&#9737; Su</text>
+
+          <!-- Cancer (Cn/4) - Mercury R, Rahu = House 6 -->
+          <text x="360" y="155" text-anchor="middle" fill="#22c55e" font-size="14" font-weight="700" class="chart-text">&#9791; Me&#8477;</text>
+          <text x="360" y="175" text-anchor="middle" fill="#38bdf8" font-size="14" font-weight="700" class="chart-text">&#9738; Ra</text>
+
+          <!-- Leo (Le/5) - Jupiter, Saturn = House 7 -->
+          <text x="360" y="255" text-anchor="middle" fill="#eab308" font-size="14" font-weight="700" class="chart-text">&#9795; Ju</text>
+          <text x="360" y="275" text-anchor="middle" fill="#6366f1" font-size="14" font-weight="700" class="chart-text">&#9796; Sa</text>
+
+          <!-- Virgo (Vi/6) - Mars = House 8 -->
+          <text x="360" y="365" text-anchor="middle" fill="#ef4444" font-size="14" font-weight="700" class="chart-text">&#9794; Ma</text>
+
+          <!-- Capricorn (Cp/10) - Ketu = House 12 -->
+          <text x="60" y="265" text-anchor="middle" fill="#9ca3af" font-size="14" font-weight="700" class="chart-text">&#9739; Ke</text>
+
+          <!-- House numbers from Lagna (Aquarius=1) -->
+          <text x="95" y="202" text-anchor="end" fill="rgba(245,158,11,0.4)" font-size="28" font-weight="900" class="chart-text">1</text>
+          <text x="95" y="102" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">2</text>
+          <text x="195" y="102" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">3</text>
+          <text x="295" y="102" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">4</text>
+          <text x="395" y="102" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">5</text>
+          <text x="395" y="202" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">6</text>
+          <text x="395" y="302" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">7</text>
+          <text x="395" y="402" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">8</text>
+          <text x="295" y="402" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">9</text>
+          <text x="195" y="402" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">10</text>
+          <text x="95" y="402" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">11</text>
+          <text x="95" y="302" text-anchor="end" fill="rgba(245,158,11,0.2)" font-size="20" font-weight="700" class="chart-text">12</text>
+        </svg>
+      </div>
+
+      <!-- Planet Positions Table -->
+      <div>
+        <table>
+          <tr><th>Planet &#34892;&#26143;</th><th>Sign &#26143;&#24231;</th><th>House &#23470;&#20301;</th><th>Status</th></tr>
+          <tr class="highlight-row">
+            <td><span class="p-sun karaka-icon">&#8466;</span> Ascendant &#19978;&#21319;</td>
+            <td>&#9810; Aquarius &#27700;&#29942;</td>
+            <td>1</td>
+            <td><span class="badge badge-gold">Lagna</span></td>
+          </tr>
+          <tr>
+            <td><span class="p-moon karaka-icon">&#9790;</span> Moon &#26376;&#20142;</td>
+            <td>&#9810; Aquarius &#27700;&#29942;</td>
+            <td>1</td>
+            <td><span class="badge badge-purple">Shatabhisha Q2</span></td>
+          </tr>
+          <tr>
+            <td><span class="p-sun karaka-icon">&#9737;</span> Sun &#22826;&#38525;</td>
+            <td>&#9802; Gemini &#38617;&#23376;</td>
+            <td>5</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="p-merc karaka-icon">&#9791;</span> Mercury &#27700;&#26143; &#8477;</td>
+            <td>&#9803; Cancer &#24040;&#34809;</td>
+            <td>6</td>
+            <td><span class="badge badge-red">Retrograde &#36870;&#34892;</span></td>
+          </tr>
+          <tr>
+            <td><span class="p-ven karaka-icon">&#9792;</span> Venus &#37329;&#26143; &#8477;</td>
+            <td>&#9801; Taurus &#37329;&#29275;</td>
+            <td>4</td>
+            <td><span class="badge badge-green">Own Sign &#33258;&#24231;</span> <span class="badge badge-red">&#8477;</span></td>
+          </tr>
+          <tr>
+            <td><span class="p-mars karaka-icon">&#9794;</span> Mars &#28779;&#26143;</td>
+            <td>&#9805; Virgo &#34389;&#22899;</td>
+            <td>8</td>
+            <td><span class="badge badge-red">Manglik!</span></td>
+          </tr>
+          <tr>
+            <td><span class="p-jup karaka-icon">&#9795;</span> Jupiter &#26408;&#26143;</td>
+            <td>&#9804; Leo &#29509;&#23376;</td>
+            <td>7</td>
+            <td><span class="badge badge-gold">Raja Yoga</span></td>
+          </tr>
+          <tr>
+            <td><span class="p-sat karaka-icon">&#9796;</span> Saturn &#22303;&#26143;</td>
+            <td>&#9804; Leo &#29509;&#23376;</td>
+            <td>7</td>
+            <td><span class="badge badge-gold">Raja Yoga</span> <span class="badge badge-purple">Lagna Lord</span></td>
+          </tr>
+          <tr>
+            <td><span class="p-rahu karaka-icon">&#9738;</span> Rahu &#32645;&#30572;</td>
+            <td>&#9803; Cancer &#24040;&#34809;</td>
+            <td>6</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><span class="p-ketu karaka-icon">&#9739;</span> Ketu &#35336;&#37117;</td>
+            <td>&#9809; Capricorn &#25705;&#32687;</td>
+            <td>12</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 3: HOUSE ANALYSIS ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F3E0;</span>
+    <h2>Bhava Analysis &#23470;&#20301;&#20998;&#26512;<span class="en">12 Houses from Aquarius Lagna</span></h2>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr>
+        <th>House &#23470;&#20301;</th>
+        <th>Sign &#26143;&#24231;</th>
+        <th>Lord &#23470;&#20027;</th>
+        <th>Planets &#33853;&#20837;&#34892;&#26143;</th>
+        <th>Significance &#21547;&#32681;</th>
+        <th>Category</th>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>1st</strong> Tanu</td>
+        <td>&#9810; Aquarius</td>
+        <td><span class="p-sat">&#9796; Saturn</span></td>
+        <td><span class="p-moon">&#9790; Moon</span></td>
+        <td>&#33258;&#25105;&#12289;&#36523;&#39636; &mdash; &#26376;&#20142;&#22312;&#27492;=&#24773;&#24863;&#35920;&#23500;&#12289;&#38364;&#25079;&#20182;&#20154;</td>
+        <td><span class="badge badge-gold">Dharma &middot; Kendra</span></td>
+      </tr>
+      <tr>
+        <td><strong>2nd</strong> Dhana</td>
+        <td>&#9811; Pisces</td>
+        <td><span class="p-jup">&#9795; Jupiter</span></td>
+        <td>&mdash;</td>
+        <td>&#36001;&#23500;&#12289;&#35328;&#35486;&#12289;&#23478;&#24237;</td>
+        <td><span class="badge badge-cyan">Artha</span></td>
+      </tr>
+      <tr>
+        <td><strong>3rd</strong> Sahaja</td>
+        <td>&#9800; Aries</td>
+        <td><span class="p-mars">&#9794; Mars</span></td>
+        <td>&mdash;</td>
+        <td>&#21191;&#27683;&#12289;&#20027;&#21205;&#24615;&#12289;&#20804;&#24351;&#22986;&#22969;</td>
+        <td><span class="badge badge-purple">Kama &middot; Upachaya</span></td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>4th</strong> Sukha</td>
+        <td>&#9801; Taurus</td>
+        <td><span class="p-ven">&#9792; Venus</span></td>
+        <td><span class="p-ven">&#9792; Ve&#8477; &#9733;</span></td>
+        <td>&#27597;&#35242;&#12289;&#23478;&#12289;&#24184;&#31119; &mdash; <strong>Venus&#33258;&#24231;=&#23478;&#24237;&#22882;&#33775;</strong></td>
+        <td><span class="badge badge-gold">Moksha &middot; Kendra</span></td>
+      </tr>
+      <tr>
+        <td><strong>5th</strong> Putra</td>
+        <td>&#9802; Gemini</td>
+        <td><span class="p-merc">&#9791; Mercury</span></td>
+        <td><span class="p-sun">&#9737; Sun</span></td>
+        <td>&#23376;&#22899;&#12289;&#21109;&#36896;&#21147;&#12289;&#26234;&#24935;</td>
+        <td><span class="badge badge-gold">Dharma &middot; Trikona</span></td>
+      </tr>
+      <tr>
+        <td><strong>6th</strong> Satru</td>
+        <td>&#9803; Cancer</td>
+        <td><span class="p-moon">&#9790; Moon</span></td>
+        <td><span class="p-merc">&#9791; Me&#8477;</span> <span class="p-rahu">&#9738; Ra</span></td>
+        <td>&#25973;&#20154;&#12289;&#38556;&#31001; &mdash; &#38750;&#20659;&#32113;&#21839;&#38988;&#35299;&#27770;</td>
+        <td><span class="badge badge-red">Artha &middot; Dusthana</span></td>
+      </tr>
+      <tr class="highlight-row">
+        <td><strong>7th</strong> Kalatra</td>
+        <td>&#9804; Leo</td>
+        <td><span class="p-sun">&#9737; Sun</span></td>
+        <td><span class="p-jup">&#9795; Ju</span> <span class="p-sat">&#9796; Sa</span></td>
+        <td>&#23130;&#23035;&#12289;&#21512;&#22821; &mdash; <strong>Raja Yoga &#22312;&#27492;!</strong></td>
+        <td><span class="badge badge-purple">Kama &middot; Kendra</span></td>
+      </tr>
+      <tr>
+        <td><strong>8th</strong> Ayur</td>
+        <td>&#9805; Virgo</td>
+        <td><span class="p-merc">&#9791; Mercury</span></td>
+        <td><span class="p-mars">&#9794; Mars</span></td>
+        <td>&#35722;&#21270;&#12289;&#22781;&#21629; &mdash; <strong>Manglik Dosha</strong></td>
+        <td><span class="badge badge-red">Moksha &middot; Dusthana</span></td>
+      </tr>
+      <tr>
+        <td><strong>9th</strong> Bhagya</td>
+        <td>&#9806; Libra</td>
+        <td><span class="p-ven">&#9792; Venus</span></td>
+        <td>&mdash;</td>
+        <td>&#27861;&#12289;&#24184;&#36939;&#12289;&#23566;&#24107;</td>
+        <td><span class="badge badge-gold">Dharma &middot; Trikona</span></td>
+      </tr>
+      <tr>
+        <td><strong>10th</strong> Karma</td>
+        <td>&#9807; Scorpio</td>
+        <td><span class="p-mars">&#9794; Mars</span></td>
+        <td>&mdash;</td>
+        <td>&#20107;&#26989;&#12289;&#31038;&#26371;&#22320;&#20301;</td>
+        <td><span class="badge badge-cyan">Artha &middot; Kendra</span></td>
+      </tr>
+      <tr>
+        <td><strong>11th</strong> Labha</td>
+        <td>&#9808; Sagittarius</td>
+        <td><span class="p-jup">&#9795; Jupiter</span></td>
+        <td>&mdash;</td>
+        <td>&#25910;&#30410;&#12289;&#39000;&#26395;&#23526;&#29694;</td>
+        <td><span class="badge badge-purple">Kama &middot; Upachaya</span></td>
+      </tr>
+      <tr>
+        <td><strong>12th</strong> Vyaya</td>
+        <td>&#9809; Capricorn</td>
+        <td><span class="p-sat">&#9796; Saturn</span></td>
+        <td><span class="p-ketu">&#9739; Ketu</span></td>
+        <td>&#35299;&#33067;&#12289;&#25613;&#22833;&#12289;&#22806;&#22283;</td>
+        <td><span class="badge badge-red">Moksha &middot; Dusthana</span></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ SECTION 4: CHARA KARAKA ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F451;</span>
+    <h2>Chara Karaka &#35722;&#21205;&#25351;&#27161;&#26143;<span class="en">Variable Significators (Jaimini)</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="grid-2">
+      <table>
+        <tr><th>Karaka &#25351;&#27161;</th><th>Planet &#34892;&#26143;</th><th>&#21547;&#32681;</th></tr>
+        <tr class="highlight-row"><td>Lagna Lord &#21629;&#20027;</td><td><span class="p-sat">&#9796; Saturn</span> in Leo (7th)</td><td>&#33258;&#25105;&#30340;&#20027;&#23472;&#22312;&#31532;7&#23470;&#65292;&#20276;&#20406;&#38364;&#20418;&#37325;&#35201;</td></tr>
+        <tr><td>5th Lord (Creativity)</td><td><span class="p-merc">&#9791; Mercury&#8477;</span> in Cancer (6th)</td><td>&#21109;&#36896;&#21147;&#36890;&#36942;&#20811;&#26381;&#38556;&#31001;&#34920;&#29694;</td></tr>
+        <tr><td>7th Lord (Marriage)</td><td><span class="p-sun">&#9737; Sun</span> in Gemini (5th)</td><td>&#23130;&#23035;&#33287;&#21109;&#36896;&#21147;&#30456;&#36899;</td></tr>
+        <tr><td>9th Lord (Dharma)</td><td><span class="p-ven">&#9792; Venus&#8477;</span> in Taurus (4th)</td><td>&#27861;&#30340;&#33021;&#37327;&#22312;&#23478;&#24237;&#20013;&#23526;&#29694;</td></tr>
+        <tr><td>10th Lord (Career)</td><td><span class="p-mars">&#9794; Mars</span> in Virgo (8th)</td><td>&#20107;&#26989;&#28041;&#21450;&#35722;&#21270;&#33287;&#28145;&#23652;&#30740;&#31350;</td></tr>
+        <tr><td>11th Lord (Gains)</td><td><span class="p-jup">&#9795; Jupiter</span> in Leo (7th)</td><td>&#25910;&#30410;&#36890;&#36942;&#21512;&#22821;&#38364;&#20418;&#23526;&#29694;</td></tr>
+      </table>
+      <div>
+        <div class="analysis-block">
+          <h4>&#38364;&#37749;&#23470;&#20027;&#20998;&#26512; &mdash; Aquarius Lagna &#29305;&#24501;</h4>
+          <ul>
+            <li><strong>Saturn &#25484;&#31649;&#31532;1+12&#23470;</strong>&#65306;&#33258;&#25105;&#65288;1st&#65289;&#33287;&#35299;&#33067;&#65288;12th&#65289;&#30456;&#36899;&#65292;&#38728;&#24615;&#25104;&#38263;&#26159;&#20154;&#29983;&#20027;&#38988;</li>
+            <li><strong>Jupiter &#25484;&#31649;&#31532;2+11&#23470;</strong>&#65306;&#36001;&#23500;&#65288;2nd&#65289;&#33287;&#25910;&#30410;&#65288;11th&#65289;&#30001;&#26234;&#24935;&#20043;&#26143;&#25484;&#31649;</li>
+            <li><strong>&#20841;&#32773;&#21512;&#30456;&#26044;7th</strong>&#65306;Saturn(1L) + Jupiter(11L) = &#24375;&#22823;&#30340;&#30343;&#23478;&#29788;&#20285;&#22312;&#23130;&#23035;&#23470;</li>
+            <li><strong>Venus&#8477;&#33258;&#24231;&#22312;4th</strong>&#65306;&#26368;&#24375;&#34892;&#26143;&#22312;&#23478;&#24237;&#23470;&#65292;&#20839;&#22312;&#30340;&#32654;&#33287;&#33298;&#36969;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 5: MKS ANALYSIS ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#9760;</span>
+    <h2>Marana Karaka Sthana &#27515;&#20129;&#25351;&#27161;&#20301;&#32622;<span class="en">MKS - Critical Weakness Points</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="analysis-block" style="border-color: var(--good);">
+      <h4 style="color:var(--good);">&#10004; &#28961;&#34892;&#26143;&#34389;&#26044; MKS &#20301;&#32622;&#65281;&#65288;&#33391;&#22909;&#65289;</h4>
+      <ul>
+        <li>&#25152;&#26377;&#34892;&#26143;&#22343;&#19981;&#22312;&#20854;&#12300;&#27515;&#20129;&#20301;&#32622;&#12301;&#65292;&#36889;&#26159;&#20491;&#33391;&#22909;&#30340;&#36321;&#35937;</li>
+        <li>&#34892;&#26143;&#33021;&#37327;&#19981;&#21463; MKS &#21066;&#24369;&#65292;&#21487;&#20197;&#26356;&#33258;&#30001;&#22320;&#34920;&#36948;</li>
+      </ul>
+    </div>
+
+    <table>
+      <tr><th>&#34892;&#26143;</th><th>MKS &#20301;&#32622;</th><th>&#23526;&#38555;&#20301;&#32622;</th><th>&#29376;&#24907;</th></tr>
+      <tr><td><span class="p-sun">&#9737; Sun</span></td><td>&#31532;12&#23470;</td><td>&#31532;5&#23470; (Gemini)</td><td><span class="badge badge-green">&#23433;&#20840;</span></td></tr>
+      <tr><td><span class="p-moon">&#9790; Moon</span></td><td>&#31532;8&#23470;</td><td>&#31532;1&#23470; (Aquarius)</td><td><span class="badge badge-green">&#23433;&#20840;</span></td></tr>
+      <tr><td><span class="p-mars">&#9794; Mars</span></td><td>&#31532;7&#23470;</td><td>&#31532;8&#23470; (Virgo)</td><td><span class="badge badge-green">&#23433;&#20840;</span></td></tr>
+      <tr><td><span class="p-merc">&#9791; Mercury</span></td><td>&#31532;7&#23470;</td><td>&#31532;6&#23470; (Cancer)</td><td><span class="badge badge-green">&#23433;&#20840;</span></td></tr>
+      <tr><td><span class="p-jup">&#9795; Jupiter</span></td><td>&#31532;3&#23470;</td><td>&#31532;7&#23470; (Leo)</td><td><span class="badge badge-green">&#23433;&#20840;</span></td></tr>
+      <tr><td><span class="p-ven">&#9792; Venus</span></td><td>&#31532;6&#23470;</td><td>&#31532;4&#23470; (Taurus)</td><td><span class="badge badge-green">&#23433;&#20840;</span></td></tr>
+      <tr><td><span class="p-sat">&#9796; Saturn</span></td><td>&#31532;1&#23470;</td><td>&#31532;7&#23470; (Leo)</td><td><span class="badge badge-green">&#23433;&#20840;</span></td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ============ SECTION 6: RETROGRADE ANALYSIS ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F504;</span>
+    <h2>&#36870;&#34892;&#34892;&#26143;&#20998;&#26512;<span class="en">Retrograde Planets Analysis (PVR Lesson 23)</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="grid-2">
+      <div class="yoga-card" style="border-left-color: var(--accent);">
+        <h4 style="color:var(--accent);">&#9791; Mercury&#8477; in Cancer&#65288;&#24040;&#34809;&#24231;&#65289;&mdash; &#31532;6&#23470;</h4>
+        <p><strong>&#21069;&#19990;&#24375;&#28872;&#39000;&#26395;</strong>&#65306;&#33287;&#30274;&#30290;&#12289;&#26381;&#21209;&#30456;&#38364;&#30340;&#28145;&#23652;&#28212;&#26395;&#12290;Mercury&#36870;&#34892;&#22312;&#31532;6&#23470;=&#24375;&#22823;&#30340;&#20998;&#26512;&#21644;&#20811;&#26381;&#38556;&#31001;&#30340;&#39493;&#21205;&#21147;&#12290;</p>
+        <p style="margin-top:8px;">&#36870;&#34892;&#30340;Mercury&#25484;&#31649;&#31532;5&#23470;&#65288;&#21109;&#36896;&#21147;&#65289;&#21644;&#31532;8&#23470;&#65288;&#35722;&#21270;&#65289;&#65292;&#20195;&#34920;&#21109;&#36896;&#21147;&#33287;&#28145;&#23652;&#36681;&#21270;&#30340;&#33021;&#37327;&#26159;&#20839;&#21270;&#30340;&#12290;</p>
+        <p style="margin-top:8px;color:var(--accent3);">&rarr; &#20839;&#22312;&#30340;&#20998;&#26512;&#33021;&#21147;&#26997;&#24375;&#65292;&#20294;&#38656;&#35201;&#26178;&#38291;&#22806;&#39023;&#32080;&#26524;</p>
+      </div>
+      <div class="yoga-card" style="border-left-color: var(--accent);">
+        <h4 style="color:var(--accent);">&#9792; Venus&#8477; in Taurus&#65288;&#37329;&#29275;&#24231;&#65289;&mdash; &#33258;&#24231;! &#31532;4&#23470;</h4>
+        <p><strong>&#21069;&#19990;&#26989;&#21147;&#39000;&#26395;</strong>&#65306;&#23565;&#23478;&#24237;&#33298;&#36969;&#33287;&#22882;&#33775;&#30340;&#28145;&#23652;&#28212;&#26395;&#12290;Venus&#22312;&#33258;&#24231;&#19988;&#36870;&#34892;=<strong>&#20839;&#22312;&#30340;&#32654;&#33287;&#33298;&#36969;</strong>&#65292;&#32780;&#38750;&#22806;&#22312;&#23637;&#31034;&#12290;</p>
+        <p style="margin-top:8px;">&#36889;&#26159;&#38750;&#24120;&#24375;&#22823;&#30340;&#37197;&#32622;&#65306;Venus&#33258;&#24231;&#30340;&#21147;&#37327;&#34987;&#36870;&#34892;&#20839;&#21270;&#65292;&#21109;&#36896;&#20986;&#26997;&#28858;&#31169;&#23494;&#20294;&#28145;&#21402;&#30340;&#34269;&#34899;&#24615;&#33287;&#32654;&#24863;&#12290;</p>
+        <p style="margin-top:8px;color:var(--accent3);">&rarr; &#31169;&#23494;&#30340;&#34269;&#34899;&#23478;&#65306;&#20839;&#22312;&#32654;&#24863;&#35920;&#23500;&#20294;&#19981;&#36629;&#26131;&#23565;&#22806;&#23637;&#31034;</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 7: SHADBALA ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F4CA;</span>
+    <h2>Shadbala &#20845;&#37325;&#34892;&#26143;&#24375;&#24230;<span class="en">Six-fold Planetary Strength</span></h2>
+  </div>
+  <div class="section-body">
+    <!-- Visual Bar Chart -->
+    <div style="margin-bottom:24px;">
+      <div class="shadbala-bar">
+        <div class="bar-label"><span class="p-ven">&#9792;</span> Venus</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:100%;background:linear-gradient(90deg,#e2e8f0,#f8fafc);">9.14R</div></div>
+        <div class="bar-value"><span class="badge badge-gold">1.66x &#26368;&#24375;</span></div>
+      </div>
+      <div class="shadbala-bar">
+        <div class="bar-label"><span class="p-jup">&#9795;</span> Jupiter</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:96%;background:linear-gradient(90deg,#eab308,#facc15);">8.79R</div></div>
+        <div class="bar-value"><span class="badge badge-green">1.35x &#24375;</span></div>
+      </div>
+      <div class="shadbala-bar">
+        <div class="bar-label"><span class="p-sat">&#9796;</span> Saturn</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:77%;background:linear-gradient(90deg,#6366f1,#818cf8);">7.07R</div></div>
+        <div class="bar-value"><span class="badge badge-green">1.41x &#24375;</span></div>
+      </div>
+      <div class="shadbala-bar">
+        <div class="bar-label"><span class="p-merc">&#9791;</span> Mercury</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:79%;background:linear-gradient(90deg,#22c55e,#4ade80);">7.23R</div></div>
+        <div class="bar-value"><span class="badge badge-cyan">1.03x &#36275;</span></div>
+      </div>
+      <div class="shadbala-bar">
+        <div class="bar-label"><span class="p-moon">&#9790;</span> Moon</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:64%;background:linear-gradient(90deg,#94a3b8,#cbd5e1);">5.84R</div></div>
+        <div class="bar-value"><span class="badge badge-red">0.97x &#24369;</span></div>
+      </div>
+      <div class="shadbala-bar">
+        <div class="bar-label"><span class="p-sun">&#9737;</span> Sun</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:61%;background:linear-gradient(90deg,#f97316,#fb923c);">5.58R</div></div>
+        <div class="bar-value"><span class="badge badge-green">1.12x &#33391;</span></div>
+      </div>
+      <div class="shadbala-bar">
+        <div class="bar-label"><span class="p-mars">&#9794;</span> Mars</div>
+        <div class="bar-bg"><div class="bar-fill" style="width:48%;background:linear-gradient(90deg,#ef4444,#f87171);">4.42R</div></div>
+        <div class="bar-value"><span class="badge badge-red">0.88x &#26368;&#24369;!</span></div>
+      </div>
+    </div>
+
+    <!-- Detailed Table -->
+    <table>
+      <tr><th>Planet</th><th>Total</th><th>Rupas</th><th>Ratio</th><th>Status</th></tr>
+      <tr class="highlight-row">
+        <td><span class="p-ven">&#9792; Venus&#8477;</span></td><td>548.45</td><td>9.14</td><td>1.66</td><td><span class="badge badge-gold">STRONGEST &#26368;&#24375;</span></td>
+      </tr>
+      <tr>
+        <td><span class="p-jup">&#9795; Jupiter</span></td><td>527.31</td><td>8.79</td><td>1.35</td><td><span class="badge badge-green">Strong &#24375;</span></td>
+      </tr>
+      <tr>
+        <td><span class="p-sat">&#9796; Saturn</span></td><td>424.36</td><td>7.07</td><td>1.41</td><td><span class="badge badge-green">Strong &#24375;</span></td>
+      </tr>
+      <tr>
+        <td><span class="p-merc">&#9791; Mercury&#8477;</span></td><td>433.53</td><td>7.23</td><td>1.03</td><td><span class="badge badge-cyan">Adequate &#36275;</span></td>
+      </tr>
+      <tr>
+        <td><span class="p-moon">&#9790; Moon</span></td><td>350.24</td><td>5.84</td><td>0.97</td><td><span class="badge badge-red">Slightly Weak &#31245;&#24369;</span></td>
+      </tr>
+      <tr>
+        <td><span class="p-sun">&#9737; Sun</span></td><td>334.61</td><td>5.58</td><td>1.12</td><td><span class="badge badge-green">Good &#33391;</span></td>
+      </tr>
+      <tr class="highlight-row">
+        <td><span class="p-mars">&#9794; Mars</span></td><td>265.22</td><td>4.42</td><td>0.88</td><td><span class="badge badge-red">WEAKEST &#26368;&#24369;!</span></td>
+      </tr>
+    </table>
+
+    <div class="analysis-block" style="margin-top:16px;">
+      <h4>Shadbala &#35299;&#35712;</h4>
+      <ul>
+        <li><strong>Venus&#8477; &#26368;&#24375;&#65288;1.66x&#65289;</strong>&#65306;&#22312;&#33258;&#24231;Taurus&#30340;&#31532;4&#23470;&#65292;&#36870;&#34892;&#20839;&#21270;&#30340;&#32654;&#33287;&#33298;&#36969;&#26159;&#20320;&#26368;&#24375;&#22823;&#30340;&#36039;&#29986;</li>
+        <li><strong>Jupiter + Saturn &#37117;&#24375;</strong>&#65306;&#24418;&#25104;Raja Yoga&#30340;&#20841;&#38982;&#34892;&#26143;&#37117;&#26377;&#36275;&#22816;&#21147;&#37327;&#65292;&#30343;&#23478;&#29788;&#20285;&#21487;&#20197;&#20805;&#20998;&#30332;&#25582;</li>
+        <li><strong>Mars &#26368;&#24369;&#65288;0.88x&#65289;</strong>&#65306;&#22312;&#31532;8&#23470;&#36896;&#25104;Manglik Dosha&#65292;&#38656;&#35201;&#29305;&#21029;&#35036;&#24375;</li>
+        <li><strong>Moon &#31245;&#24369;&#65288;0.97x&#65289;</strong>&#65306;&#22312;Lagna&#20294;&#21463;Sade Sati&#22739;&#21147;&#65292;&#24773;&#32210;&#38656;&#35201;&#38989;&#22806;&#38364;&#27880;</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 8: BHAVA BALA ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F3DB;</span>
+    <h2>Bhava Bala &#23470;&#20301;&#24375;&#24230;<span class="en">House Strength Analysis</span></h2>
+  </div>
+  <div class="section-body">
+    <table>
+      <tr><th>House</th><th>Sign</th><th>Rupas</th><th>Ratio</th><th>Rank</th></tr>
+      <tr class="highlight-row"><td><strong>11th</strong> Labha</td><td>&#9808; Sagittarius</td><td>10.05</td><td>1.44</td><td><span class="badge badge-gold">1st STRONGEST &#26368;&#24375;</span></td></tr>
+      <tr><td><strong>2nd</strong> Dhana</td><td>&#9811; Pisces</td><td>9.64</td><td>1.38</td><td><span class="badge badge-green">2nd</span></td></tr>
+      <tr><td><strong>9th</strong> Bhagya</td><td>&#9806; Libra</td><td>9.63</td><td>1.38</td><td><span class="badge badge-green">tied 2nd</span></td></tr>
+      <tr><td><strong>4th</strong> Sukha</td><td>&#9801; Taurus</td><td>9.14</td><td>1.31</td><td><span class="badge badge-green">3rd</span></td></tr>
+      <tr><td><strong>1st</strong> Tanu</td><td>&#9810; Aquarius</td><td>8.05</td><td>1.15</td><td>5th</td></tr>
+      <tr><td><strong>5th</strong> Putra</td><td>&#9802; Gemini</td><td>7.58</td><td>1.08</td><td>6th</td></tr>
+      <tr><td><strong>8th</strong> Ayur</td><td>&#9805; Virgo</td><td>7.48</td><td>1.07</td><td>7th</td></tr>
+      <tr><td><strong>12th</strong> Vyaya</td><td>&#9809; Capricorn</td><td>7.41</td><td>1.06</td><td>8th</td></tr>
+      <tr><td><strong>6th</strong> Satru</td><td>&#9803; Cancer</td><td>6.52</td><td>0.93</td><td>9th</td></tr>
+      <tr><td><strong>7th</strong> Kalatra</td><td>&#9804; Leo</td><td>6.08</td><td>0.87</td><td>10th</td></tr>
+      <tr><td><strong>10th</strong> Karma</td><td>&#9807; Scorpio</td><td>5.09</td><td>0.73</td><td>11th</td></tr>
+      <tr class="highlight-row"><td><strong>3rd</strong> Sahaja</td><td>&#9800; Aries</td><td>4.55</td><td>0.65</td><td><span class="badge badge-red">12th WEAKEST &#26368;&#24369;</span></td></tr>
+    </table>
+    <div class="analysis-block" style="margin-top:16px;">
+      <h4>&#23470;&#20301;&#24375;&#24230;&#35299;&#35712;</h4>
+      <ul>
+        <li><strong>&#31532;11&#23470;&#26368;&#24375;&#65288;1.44x&#65289;</strong>&#65306;&#25910;&#30410;&#12289;&#39000;&#26395;&#23526;&#29694;&#12289;&#31038;&#20132;&#32178;&#32097;&#26159;&#20320;&#26368;&#24375;&#22823;&#30340;&#38936;&#22495;</li>
+        <li><strong>&#31532;2+9&#23470;&#20006;&#21015;&#31532;2&#65288;1.38x&#65289;</strong>&#65306;&#36001;&#23500;&#33287;&#27861;&#30340;&#23470;&#20301;&#37117;&#24375;&#65292;&#36001;&#31119;&#20860;&#20855;</li>
+        <li><strong>&#31532;4&#23470;&#31532;3&#65288;1.31x&#65289;</strong>&#65306;&#33287;Venus&#33258;&#24231;&#30456;&#21628;&#25033;&#65292;&#23478;&#24237;&#33287;&#24184;&#31119;&#30340;&#22522;&#30990;&#38750;&#24120;&#31337;&#22266;</li>
+        <li><strong>&#31532;3&#23470;&#26368;&#24369;&#65288;0.65x&#65289;</strong>&#65306;&#21191;&#27683;&#33287;&#20027;&#21205;&#24615;&#38656;&#35201;&#21152;&#24375;&#65292;&#21487;&#33021;&#34920;&#29694;&#28858;&#29494;&#35947;&#19981;&#27770;</li>
+        <li><strong>&#31532;10&#23470;&#36611;&#24369;&#65288;0.73x&#65289;</strong>&#65306;&#20107;&#26989;&#38656;&#35201;&#38989;&#22806;&#21162;&#21147;&#65292;&#20294;10th lord Mars&#22312;8th&#34920;&#31034;&#36890;&#36942;&#35722;&#21270;&#25104;&#38263;</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 9: DOSHA DETECTION ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x26A0;</span>
+    <h2>Dosha &#34892;&#26143;&#32570;&#38519;&#27298;&#28204;<span class="en">Planetary Flaws Detection</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="dosha-card dosha-present">
+      <div class="dosha-icon" style="color:var(--warn);">&#9888;</div>
+      <div>
+        <h4 style="color:var(--warn);margin-bottom:4px;">Manglik Dosha &#28779;&#26143;&#32570;&#38519; &mdash; <span class="badge badge-red">PRESENT &#30906;&#35469;</span></h4>
+        <p style="color:var(--muted);font-size:0.9em;">&#21407;&#22240;&#65306;Mars &#22312;&#31532;8&#23470;&#65288;Virgo&#65289;&#12290;&#20351;&#20154;&#33086;&#27683;&#26292;&#36481;&#12289;&#24615;&#26684;&#20855;&#26377;&#20405;&#30053;&#24615;&#12289;&#23481;&#26131;&#30332;&#29983;&#24847;&#22806;&#12290;&#21487;&#33021;&#24433;&#38911;&#37197;&#20598;&#30340;&#22781;&#21629;&#12290;&#28961;&#20363;&#22806;&#36969;&#29992;&#12290;</p>
+        <div style="margin-top:10px;padding:10px;background:var(--card);border-radius:8px;">
+          <p style="color:var(--accent);font-size:0.85em;font-weight:600;margin-bottom:6px;">&#35036;&#25937;&#26041;&#27861;&#65306;</p>
+          <ul style="padding-left:18px;">
+            <li style="color:var(--muted);font-size:0.85em;">Kumbh Vivah&#65288;&#33287;&#29942;&#23376;&#30340;&#35937;&#24501;&#24615;&#23130;&#31150;&#65289;&#22312;&#23526;&#38555;&#23130;&#23035;&#21069;&#36914;&#34892;</li>
+            <li style="color:var(--muted);font-size:0.85em;">&#27599;&#36913;&#20108;&#23815;&#25308; Hanuman&#65288;&#21704;&#21162;&#26364;&#65289;</li>
+            <li style="color:var(--muted);font-size:0.85em;">&#35494;&#35712; "Om Kram Kreem Kroum Sah Bhaumaya Namah" 108&#36941;</li>
+            <li style="color:var(--muted);font-size:0.85em;">&#36913;&#20108;&#25424;&#32005;&#25153;&#35910;&#12289;&#32005;&#24067;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="dosha-card dosha-present">
+      <div class="dosha-icon" style="color:var(--warn);">&#9888;</div>
+      <div>
+        <h4 style="color:var(--warn);margin-bottom:4px;">Pitru Dosha &#31062;&#20808;&#26989;&#21147;&#32570;&#38519; &mdash; <span class="badge badge-red">PRESENT &#30906;&#35469;</span></h4>
+        <p style="color:var(--muted);font-size:0.9em;">&#21407;&#22240;&#65306;Sun/Moon/Rahu/Ketu &#21463;&#21040; Mars &#21644; Saturn &#30340;&#24433;&#38911;&#12290;&#31062;&#20808;&#26989;&#21147;&#20661;&#21209;&#34920;&#29694;&#28858;&#28961;&#27861;&#35299;&#37323;&#30340;&#38556;&#31001;&#12290;</p>
+        <div style="margin-top:10px;padding:10px;background:var(--card);border-radius:8px;">
+          <p style="color:var(--accent);font-size:0.85em;font-weight:600;margin-bottom:6px;">&#35036;&#25937;&#26041;&#27861;&#65306;</p>
+          <ul style="padding-left:18px;">
+            <li style="color:var(--muted);font-size:0.85em;">&#27599;&#26376; Amavasya&#65288;&#26032;&#26376;&#65289;&#34892; Tarpana&#65288;&#27700;&#20379;&#31062;&#20808;&#65289;&#20736;&#24335;</li>
+            <li style="color:var(--muted);font-size:0.85em;">&#27599;&#26085;&#39221;&#39135;&#28879;&#40201;&#65288;Pitru &#20379;&#21697;&#30340;&#20659;&#36958;&#32773;&#65289;</li>
+            <li style="color:var(--muted);font-size:0.85em;">&#31278;&#26893;&#33769;&#25552;&#27193;&#20006;&#24713;&#24515;&#29031;&#26009;</li>
+            <li style="color:var(--muted);font-size:0.85em;">&#35494;&#35712; Pitru Suktam &#25110;&#34892; Narayana Bali &#27861;&#26371;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="dosha-card dosha-absent"><div class="dosha-icon" style="color:var(--good);">&#10004;</div><div><h4 style="color:var(--muted);">Kala Sarpa Dosha &mdash; <span class="badge badge-green">Not Present</span></h4></div></div>
+    <div class="dosha-card dosha-absent"><div class="dosha-icon" style="color:var(--good);">&#10004;</div><div><h4 style="color:var(--muted);">Guru Chandala Dosha &mdash; <span class="badge badge-green">Not Present</span></h4></div></div>
+    <div class="dosha-card dosha-absent"><div class="dosha-icon" style="color:var(--good);">&#10004;</div><div><h4 style="color:var(--muted);">Ganda Moola Dosha &mdash; <span class="badge badge-green">Not Present</span></h4></div></div>
+    <div class="dosha-card dosha-absent"><div class="dosha-icon" style="color:var(--good);">&#10004;</div><div><h4 style="color:var(--muted);">Kalathra Dosha &mdash; <span class="badge badge-green">Not Present</span></h4></div></div>
+    <div class="dosha-card dosha-absent"><div class="dosha-icon" style="color:var(--good);">&#10004;</div><div><h4 style="color:var(--muted);">Ghata Dosha &mdash; <span class="badge badge-green">Not Present</span></h4></div></div>
+    <div class="dosha-card dosha-absent"><div class="dosha-icon" style="color:var(--good);">&#10004;</div><div><h4 style="color:var(--muted);">Shrapit Dosha &mdash; <span class="badge badge-green">Not Present</span></h4></div></div>
+  </div>
+</div>
+
+<!-- ============ SECTION 10: RAJA YOGA ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F451;</span>
+    <h2>Raja Yoga &#30343;&#23478;&#32068;&#21512;<span class="en">Royal Planetary Combinations</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="yoga-card" style="border-left-color: var(--accent);">
+      <h4 style="color:var(--accent);">Dharma Karmadhipati Raja Yoga&#65288;&#27861;&#26989;&#20027;&#30343;&#23478;&#29788;&#20285;&#65289;&mdash; Jupiter&#9795; + Saturn&#9796; in Leo (7th House)</h4>
+      <p>Jupiter&#65288;&#31532;2&#23470;+&#31532;11&#23470;&#20027;&#65289;&#33287; Saturn&#65288;&#31532;1&#23470;&#20027;=Lagna Lord + &#31532;12&#23470;&#20027;&#65289;&#21512;&#30456;&#26044;&#31532;7&#23470;&#65288;&#23130;&#23035;&#23470;&#65289;</p>
+      <p style="margin-top:8px;"><em>"One born with this yoga is sincere, devoted and righteous. He is fortunate."</em></p>
+      <p style="margin-top:8px;"><strong>&#38364;&#37749;&#24847;&#32681;&#65306;</strong></p>
+      <ul style="padding-left:18px;margin-top:6px;">
+        <li style="color:var(--muted);font-size:0.9em;">Saturn&#65288;1L=&#33258;&#25105;&#65289;+ Jupiter&#65288;11L=&#25910;&#30410;&#65289;&#22312;&#31532;7&#23470; = &#23130;&#23035;&#33287;&#21512;&#22821;&#38364;&#20418;&#24118;&#20358;&#36001;&#23500;&#33287;&#22909;&#36939;</li>
+        <li style="color:var(--muted);font-size:0.9em;">&#31532;7&#23470;&#30340;&#20301;&#32622;&#34920;&#31034;&#36889;&#20491;Raja Yoga&#36890;&#36942;&#23130;&#23035;/&#21512;&#22821;&#28608;&#27963;</li>
+        <li style="color:var(--muted);font-size:0.9em;">&#20294;&#20063;&#34920;&#31034;&#23130;&#23035;&#24118;&#20358;&#24040;&#22823;&#36012;&#20219; &mdash; &#24184;&#31119;&#33287;&#22739;&#21147;&#20006;&#23384;</li>
+      </ul>
+    </div>
+    <div class="analysis-block">
+      <h4>Raja Yoga &#22312;&#23130;&#23035;&#23470;&#30340;&#29305;&#27530;&#24847;&#32681;</h4>
+      <ul>
+        <li><strong>&#38617;&#37325;&#31069;&#31119;</strong>&#65306;Jupiter&#65288;&#22823;&#21513;&#26143;&#65289;&#22312;&#31532;7&#23470;&#31069;&#31119;&#23130;&#23035;&#65292;Saturn&#65288;Lagna Lord&#65289;&#20195;&#34920;&#33258;&#25105;&#30340;&#25237;&#20837;</li>
+        <li><strong>&#20294;&#38656;&#27880;&#24847;</strong>&#65306;Saturn&#22312;&#31532;7&#23470;&#21487;&#33021;&#24118;&#20358;&#23130;&#23035;&#30340;&#24310;&#36978;&#25110;&#38480;&#21046;&#65292;Mars&#22312;8th&#30340;Manglik Dosha&#20063;&#24433;&#38911;&#23130;&#23035;</li>
+        <li><strong>&#32156;&#21512;&#21028;&#26039;</strong>&#65306;&#23130;&#23035;&#26371;&#20358;&#20294;&#21487;&#33021;&#36611;&#26202;&#65292;&#20358;&#20102;&#20043;&#24460;&#26371;&#24118;&#20358;&#24040;&#22823;&#36001;&#23500;&#33287;&#22909;&#36939;</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 11: DIVISIONAL CHARTS ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F4CA;</span>
+    <h2>Divisional Charts &#20998;&#30436;<span class="en">Varga Chakras (D-9, D-10, D-20, D-24, D-30, D-60)</span></h2>
+  </div>
+  <div class="section-body">
+    <!-- First row: D-9, D-10 -->
+    <div class="grid-3">
+      <!-- D-9 Navamsa -->
+      <div class="chart-container">
+        <div class="chart-label">Navamsa D-9&#65288;&#23130;&#23035;/&#38728;&#39746;&#65289;</div>
+        <svg width="280" height="280" viewBox="0 0 280 280">
+          <rect x="0" y="0" width="280" height="280" rx="6" fill="#1a2236" stroke="#374151" stroke-width="1.5"/>
+          <rect x="5" y="5" width="270" height="270" fill="none" stroke="#4b5563" stroke-width="1"/>
+          <line x1="72.5" y1="5" x2="72.5" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="140" y1="5" x2="140" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="207.5" y1="5" x2="207.5" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="72.5" x2="275" y2="72.5" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="140" x2="275" y2="140" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="207.5" x2="275" y2="207.5" stroke="#4b5563" stroke-width="0.5"/>
+          <rect x="72.5" y="72.5" width="135" height="135" fill="#111827" stroke="#4b5563" stroke-width="0.5"/>
+          <text x="140" y="135" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="700" class="chart-text">Navamsa</text>
+          <text x="140" y="150" text-anchor="middle" fill="#9ca3af" font-size="9" class="chart-text">D-9</text>
+          <!-- Pisces: Sun+Rahu -->
+          <text x="38" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9811;Pi</text>
+          <text x="38" y="42" text-anchor="middle" fill="#f97316" font-size="10" font-weight="700" class="chart-text">&#9737;Su</text>
+          <text x="38" y="56" text-anchor="middle" fill="#38bdf8" font-size="10" font-weight="700" class="chart-text">&#9738;Ra</text>
+          <!-- Aries -->
+          <text x="106" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9800;Ar</text>
+          <!-- Taurus -->
+          <text x="174" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9801;Ta</text>
+          <!-- Gemini -->
+          <text x="242" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9802;Ge</text>
+          <!-- ASC: Aquarius -->
+          <rect x="6" y="74" width="65" height="65" fill="rgba(245,158,11,0.08)" stroke="none"/>
+          <text x="38" y="92" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9810;Aq</text>
+          <text x="38" y="108" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="700" class="chart-text">&#8466;ASC</text>
+          <!-- Cancer: Mercury R -->
+          <text x="242" y="92" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9803;Cn</text>
+          <text x="242" y="108" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700" class="chart-text">&#9791;Me&#8477;</text>
+          <!-- Capricorn: Moon+Mars -->
+          <text x="38" y="180" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9809;Cp</text>
+          <text x="38" y="196" text-anchor="middle" fill="#e2e8f0" font-size="10" font-weight="700" class="chart-text">&#9790;Mo</text>
+          <text x="38" y="210" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="700" class="chart-text">&#9794;Ma</text>
+          <!-- Leo: Jupiter+Venus R -->
+          <text x="242" y="180" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9804;Le</text>
+          <text x="242" y="196" text-anchor="middle" fill="#eab308" font-size="10" font-weight="700" class="chart-text">&#9795;Ju</text>
+          <text x="242" y="210" text-anchor="middle" fill="#f0f0f0" font-size="10" font-weight="700" class="chart-text">&#9792;Ve&#8477;</text>
+          <!-- Sagittarius: Saturn -->
+          <text x="38" y="230" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9808;Sg</text>
+          <text x="38" y="250" text-anchor="middle" fill="#6366f1" font-size="10" font-weight="700" class="chart-text">&#9796;Sa</text>
+          <!-- Scorpio -->
+          <text x="106" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9807;Sc</text>
+          <!-- Libra -->
+          <text x="174" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9806;Li</text>
+          <!-- Virgo: Ketu -->
+          <text x="242" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9805;Vi</text>
+          <text x="242" y="242" text-anchor="middle" fill="#9ca3af" font-size="10" class="chart-text">&#9739;Ke</text>
+        </svg>
+      </div>
+
+      <!-- D-10 Dasamsa -->
+      <div class="chart-container">
+        <div class="chart-label">Dasamsa D-10&#65288;&#20107;&#26989;&#65289;</div>
+        <svg width="280" height="280" viewBox="0 0 280 280">
+          <rect x="0" y="0" width="280" height="280" rx="6" fill="#1a2236" stroke="#374151" stroke-width="1.5"/>
+          <rect x="5" y="5" width="270" height="270" fill="none" stroke="#4b5563" stroke-width="1"/>
+          <line x1="72.5" y1="5" x2="72.5" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="140" y1="5" x2="140" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="207.5" y1="5" x2="207.5" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="72.5" x2="275" y2="72.5" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="140" x2="275" y2="140" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="207.5" x2="275" y2="207.5" stroke="#4b5563" stroke-width="0.5"/>
+          <rect x="72.5" y="72.5" width="135" height="135" fill="#111827" stroke="#4b5563" stroke-width="0.5"/>
+          <text x="140" y="135" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="700" class="chart-text">Dasamsa</text>
+          <text x="140" y="150" text-anchor="middle" fill="#9ca3af" font-size="9" class="chart-text">D-10</text>
+          <!-- ASC: Cancer -->
+          <rect x="209" y="74" width="65" height="65" fill="rgba(245,158,11,0.08)" stroke="none"/>
+          <text x="242" y="92" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9803;Cn</text>
+          <text x="242" y="108" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="700" class="chart-text">&#8466;ASC</text>
+          <!-- Taurus: Saturn -->
+          <text x="174" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9801;Ta</text>
+          <text x="174" y="42" text-anchor="middle" fill="#6366f1" font-size="10" font-weight="700" class="chart-text">&#9796;Sa</text>
+          <!-- Gemini: Moon+Mars+Ketu -->
+          <text x="242" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9802;Ge</text>
+          <text x="242" y="42" text-anchor="middle" fill="#e2e8f0" font-size="9" font-weight="700" class="chart-text">&#9790;&#9794;&#9739;</text>
+          <!-- Leo: Venus R -->
+          <text x="242" y="180" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9804;Le</text>
+          <text x="242" y="196" text-anchor="middle" fill="#f0f0f0" font-size="10" font-weight="700" class="chart-text">&#9792;Ve&#8477;</text>
+          <!-- Scorpio: Sun+Jupiter+Rahu -->
+          <text x="106" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9807;Sc</text>
+          <text x="106" y="242" text-anchor="middle" fill="#f97316" font-size="9" font-weight="700" class="chart-text">&#9737;&#9795;&#9738;</text>
+          <!-- Pisces: Mercury R -->
+          <text x="38" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9811;Pi</text>
+          <text x="38" y="42" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700" class="chart-text">&#9791;Me&#8477;</text>
+          <!-- remaining signs -->
+          <text x="106" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9800;Ar</text>
+          <text x="38" y="110" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9810;Aq</text>
+          <text x="38" y="180" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9809;Cp</text>
+          <text x="38" y="230" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9808;Sg</text>
+          <text x="174" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9806;Li</text>
+          <text x="242" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9805;Vi</text>
+        </svg>
+      </div>
+
+      <!-- D-20 Vimsamsa -->
+      <div class="chart-container">
+        <div class="chart-label">Vimsamsa D-20&#65288;&#38728;&#24615;&#65289;</div>
+        <svg width="280" height="280" viewBox="0 0 280 280">
+          <rect x="0" y="0" width="280" height="280" rx="6" fill="#1a2236" stroke="#374151" stroke-width="1.5"/>
+          <rect x="5" y="5" width="270" height="270" fill="none" stroke="#4b5563" stroke-width="1"/>
+          <line x1="72.5" y1="5" x2="72.5" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="140" y1="5" x2="140" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="207.5" y1="5" x2="207.5" y2="275" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="72.5" x2="275" y2="72.5" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="140" x2="275" y2="140" stroke="#4b5563" stroke-width="0.5"/>
+          <line x1="5" y1="207.5" x2="275" y2="207.5" stroke="#4b5563" stroke-width="0.5"/>
+          <rect x="72.5" y="72.5" width="135" height="135" fill="#111827" stroke="#4b5563" stroke-width="0.5"/>
+          <text x="140" y="135" text-anchor="middle" fill="#f59e0b" font-size="10" font-weight="700" class="chart-text">Vimsamsa</text>
+          <text x="140" y="150" text-anchor="middle" fill="#9ca3af" font-size="9" class="chart-text">D-20</text>
+          <!-- ASC: Libra with Mars+Rahu+Ketu -->
+          <rect x="140" y="209" width="66" height="65" fill="rgba(245,158,11,0.08)" stroke="none"/>
+          <text x="174" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9806;Li</text>
+          <text x="174" y="238" text-anchor="middle" fill="#f59e0b" font-size="9" font-weight="700" class="chart-text">&#8466;&#9794;&#9738;&#9739;</text>
+          <!-- Leo: Sun+Moon -->
+          <text x="242" y="180" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9804;Le</text>
+          <text x="242" y="196" text-anchor="middle" fill="#f97316" font-size="10" font-weight="700" class="chart-text">&#9737;&#9790;</text>
+          <!-- Virgo: Jupiter -->
+          <text x="242" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9805;Vi</text>
+          <text x="242" y="242" text-anchor="middle" fill="#eab308" font-size="10" font-weight="700" class="chart-text">&#9795;Ju</text>
+          <!-- Taurus: Mercury R -->
+          <text x="174" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9801;Ta</text>
+          <text x="174" y="42" text-anchor="middle" fill="#22c55e" font-size="10" font-weight="700" class="chart-text">&#9791;Me&#8477;</text>
+          <!-- Cancer: Saturn -->
+          <text x="242" y="92" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9803;Cn</text>
+          <text x="242" y="108" text-anchor="middle" fill="#6366f1" font-size="10" font-weight="700" class="chart-text">&#9796;Sa</text>
+          <!-- Pisces: Venus R -->
+          <text x="38" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9811;Pi</text>
+          <text x="38" y="42" text-anchor="middle" fill="#f0f0f0" font-size="10" font-weight="700" class="chart-text">&#9792;Ve&#8477;</text>
+          <!-- remaining labels -->
+          <text x="106" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9800;Ar</text>
+          <text x="242" y="22" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9802;Ge</text>
+          <text x="38" y="110" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9810;Aq</text>
+          <text x="38" y="180" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9809;Cp</text>
+          <text x="38" y="230" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9808;Sg</text>
+          <text x="106" y="222" text-anchor="middle" fill="#6b7280" font-size="8" class="chart-text">&#9807;Sc</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Divisional Chart Analysis -->
+    <div style="margin-top:24px;">
+      <div class="grid-2">
+        <div class="analysis-block">
+          <h4>D-9 Navamsa &#35299;&#35712;&#65288;&#23130;&#23035;/&#38728;&#39746;&#65289;</h4>
+          <ul>
+            <li><strong>Navamsa Lagna = Aquarius</strong>&#65306;&#33287;&#20986;&#29983;&#30436;&#30456;&#21516;&#65281;&#34920;&#31034;&#20839;&#22312;&#26412;&#36074;&#33287;&#22806;&#22312;&#34920;&#29694;&#19968;&#33268;</li>
+            <li><strong>Jupiter+Venus&#8477; in Leo (7th)</strong>&#65306;&#23130;&#23035;&#23470;&#26377;&#21513;&#26143;&#32068;&#21512;&#65292;&#23130;&#23035;&#26377;&#22909;&#30340;&#28507;&#21147;</li>
+            <li><strong>Sun+Rahu in Pisces (2nd)</strong>&#65306;&#36001;&#23500;&#33287;&#23478;&#24237;&#21463;Rahu&#24433;&#38911;&#65292;&#38750;&#20659;&#32113;&#30340;&#36001;&#28304;</li>
+            <li><strong>Moon+Mars in Capricorn (12th)</strong>&#65306;&#24773;&#32210;&#33287;&#34892;&#21205;&#21147;&#22312;&#38728;&#24615;/&#22806;&#22283;&#38936;&#22495;&#34920;&#29694;</li>
+          </ul>
+        </div>
+        <div class="analysis-block">
+          <h4>D-10 Dasamsa &#35299;&#35712;&#65288;&#20107;&#26989;&#65289;</h4>
+          <ul>
+            <li><strong>D-10 Lagna = Cancer</strong>&#65306;&#20107;&#26989;&#33287;&#29031;&#39015;/&#28363;&#39178;&#30456;&#38364;&#65292;&#26376;&#20142;&#33021;&#37327;</li>
+            <li><strong>Sun+Jupiter+Rahu in Scorpio (5th)</strong>&#65306;&#21109;&#36896;&#21147;&#33287;&#30740;&#31350;&#24037;&#20316;&#65292;&#28145;&#23652;&#20998;&#26512;</li>
+            <li><strong>Saturn in Taurus (11th)</strong>&#65306;&#36890;&#36942;&#22533;&#25345;&#21644;&#32000;&#24459;&#29554;&#24471;&#20107;&#26989;&#25910;&#30410;</li>
+            <li><strong>Mercury&#8477; in Pisces (9th)</strong>&#65306;&#20107;&#26989;&#26041;&#21521;&#33287;&#21746;&#23416;/&#38728;&#24615;&#30456;&#38364;</li>
+          </ul>
+        </div>
+      </div>
+      <div class="grid-2" style="margin-top:16px;">
+        <div class="analysis-block">
+          <h4>D-24 &#25945;&#32946;&#30436; / D-30 &#24369;&#40670;&#30436;</h4>
+          <ul>
+            <li><strong>D-24 Lagna = Leo with Mercury&#8477;</strong>&#65306;&#25945;&#32946;&#33287;&#28317;&#36890;&#30456;&#38364;&#65292;&#23416;&#32722;&#33021;&#21147;&#24375;</li>
+            <li><strong>D-30 Lagna = Sagittarius with Moon+Jupiter</strong>&#65306;Jupiter&#65288;Akasha&#20803;&#32032;&#65289;&#20027;&#23566;</li>
+            <li><strong>D-30 Mars+Mercury&#8477; in Taurus</strong>&#65306;Earth&#20803;&#32032;&#24369;&#40670;&#65292;&#28040;&#21270;&#31995;&#32113;&#27880;&#24847;</li>
+            <li><strong>&#20581;&#24247;&#25552;&#37266;</strong>&#65306;&#31070;&#32147;&#31995;&#32113;&#65288;Mercury&#36870;&#34892;&#65289;&#33287;&#28040;&#21270;&#65288;Mars&#22312;&#22303;&#20803;&#32032;&#65289;&#38656;&#29031;&#39015;</li>
+          </ul>
+        </div>
+        <div class="analysis-block">
+          <h4>D-60 Shastiamsa&#65288;&#21069;&#19990;&#65289;</h4>
+          <ul>
+            <li><strong>D-60 Lagna = Virgo with Ketu</strong>&#65306;&#21069;&#19990;&#33287;&#26381;&#21209;&#12289;&#20998;&#26512;&#12289;&#38728;&#24615;&#35299;&#33067;&#30456;&#38364;</li>
+            <li><strong>Sun+Saturn in Gemini</strong>&#65306;&#21069;&#19990;&#30340;&#27402;&#23041;&#33287;&#32000;&#24459;&#35506;&#38988;&#22312;&#28317;&#36890;&#38936;&#22495;</li>
+            <li><strong>Mercury&#8477;+Jupiter in Scorpio</strong>&#65306;&#21069;&#19990;&#28145;&#23652;&#30693;&#35672;&#30340;&#31309;&#32047;</li>
+            <li><strong>Moon in Aquarius</strong>&#65306;&#33287;&#20986;&#29983;&#30436;&#30456;&#21516;&#65292;&#38728;&#39746;&#30340;&#24773;&#32210;&#27169;&#24335;&#36328;&#36234;&#22810;&#19990;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 12: ARUDHA PADA ADVANCED ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1FA9E;</span>
+    <h2>Arudha Pada &#34395;&#20687;&#23470;&#20301;&#36914;&#38542;&#20998;&#26512;<span class="en">Worldly Perception (Lesson 9-10)</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="grid-2">
+      <div>
+        <table>
+          <tr><th>Arudha Pada</th><th>Sign</th><th>&#21547;&#32681;</th></tr>
+          <tr class="highlight-row"><td>Arudha Lagna (AL)</td><td>&#9808; Sagittarius &#23556;&#25163;</td><td>&#22806;&#22312;&#24418;&#35937;&#65306;&#21746;&#23416;&#23478;&#12289;&#23566;&#24107;&#12289;&#26234;&#24935;&#24418;&#35937;</td></tr>
+          <tr><td>Dhanarudha (A2)</td><td>&#9809; Capricorn</td><td>&#36001;&#23500;&#24418;&#35937;&#65306;&#23526;&#38555;&#12289;&#31337;&#23450;</td></tr>
+          <tr><td>Bhatrarudha (A3)</td><td>&#9810; Aquarius</td><td>&#20804;&#24351;&#24418;&#35937;</td></tr>
+          <tr><td>Matri Pada (A4)</td><td>&#9810; Aquarius</td><td>&#23478;&#24237;/&#27597;&#35242;&#24418;&#35937;</td></tr>
+          <tr><td>Mantra Pada (A5)</td><td>&#9804; Leo</td><td>&#21109;&#36896;&#21147;/&#23376;&#22899;&#24418;&#35937;</td></tr>
+          <tr><td>Roga Pada (A6)</td><td>&#9805; Virgo</td><td>&#38556;&#31001;/&#30142;&#30149;&#24418;&#35937;</td></tr>
+          <tr><td>Dara Pada (A7)</td><td>&#9800; Aries</td><td>&#37197;&#20598;&#24418;&#35937;&#65306;&#29544;&#31435;&#12289;&#31309;&#26997;</td></tr>
+          <tr class="highlight-row"><td>Karma Pada (A10)</td><td>&#9811; Pisces</td><td>&#20107;&#26989;&#24418;&#35937;&#65306;&#38728;&#24615;&#12289;&#21109;&#24847;</td></tr>
+          <tr><td>Upapada Lagna (UL)</td><td>&#9811; Pisces</td><td>&#23526;&#38555;&#23130;&#23035;&#65306;&#38728;&#24615;&#36899;&#32080;&#12289;&#22818;&#24187;</td></tr>
+        </table>
+      </div>
+      <div>
+        <div class="analysis-block">
+          <h4>AL = Sagittarius &#36914;&#38542;&#20998;&#26512;</h4>
+          <ul>
+            <li><strong>AL in Sagittarius</strong>&#65306;&#22806;&#22312;&#24418;&#35937;&#28858;&#21746;&#23416;&#23478;&#12289;&#25945;&#32946;&#32773;&#12289;&#36861;&#27714;&#30495;&#29702;&#30340;&#20154;</li>
+            <li><strong>UL in Pisces</strong>&#65306;&#23526;&#38555;&#23130;&#23035;&#26377;&#38728;&#24615;&#36899;&#32080;&#65292;&#22818;&#24187;&#33324;&#30340;&#21697;&#36074;</li>
+            <li><strong>A7 in Aries</strong>&#65306;&#37197;&#20598;&#32102;&#20154;&#30340;&#21360;&#35937;&#26159;&#29544;&#31435;&#12289;&#31309;&#26997;&#12289;&#26377;&#34892;&#21205;&#21147;</li>
+            <li><strong>A10 in Pisces</strong>&#65306;&#20107;&#26989;&#22312;&#22806;&#20154;&#30524;&#20013;&#24118;&#26377;&#38728;&#24615;&#25110;&#21109;&#24847;&#33394;&#24425;</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 13: ISHTA DEVATA ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F549;</span>
+    <h2>Ishta Devata &#23432;&#35703;&#31070;&#20998;&#26512;<span class="en">Personal Deity Analysis (Lesson 15/17)</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="grid-3">
+      <div class="info-card" style="border-left: 4px solid var(--accent);">
+        <h3 style="color:var(--accent);">Ishta Devata &#23432;&#35703;&#31070;</h3>
+        <p><strong style="font-size:1.2em;color:var(--accent);">Pisces/Neptune &#38728;&#24615;&#36947;&#36335;</strong></p>
+        <p style="margin-top:8px;">D-9 &#20013; Sun+Rahu in Pisces (2nd from Aquarius Lagna)</p>
+        <p>Pisces &#30340;&#38728;&#24615;&#33021;&#37327;&#24375;&#22823;&#65292;&#25351;&#21521;&#28145;&#23652;&#38728;&#24615;&#36861;&#27714;</p>
+        <p style="margin-top:4px;color:var(--accent3);">&#23452;&#23815;&#25308; Vishnu / Narayana&#65288;&#27700;&#20803;&#32032;&#30340;&#38728;&#24615;&#34920;&#36948;&#65289;</p>
+      </div>
+      <div class="info-card" style="border-left: 4px solid var(--accent2);">
+        <h3>&#23130;&#23035;&#23470;&#38728;&#24615;&#20998;&#26512;</h3>
+        <p>D-9 &#31532;7&#23470; Leo: Jupiter + Venus&#8477;</p>
+        <p>&#23130;&#23035;&#26377;&#38728;&#24615;&#24847;&#32681;&#65292;&#20276;&#20406;&#21487;&#33021;&#26159;&#38728;&#24615;&#22821;&#20276;</p>
+        <p style="margin-top:4px;color:var(--accent3);">Jupiter &#20195;&#34920; Guru/&#23566;&#24107;&#65292;Venus &#20195;&#34920;&#24859;&#33287;&#32654; &mdash; &#23130;&#23035;&#20013;&#23416;&#32722;&#33287;&#25104;&#38263;</p>
+      </div>
+      <div class="info-card" style="border-left: 4px solid var(--accent3);">
+        <h3>Dharma Devata &#27861;&#31070;</h3>
+        <p>Moon in Shatabhisha Nakshatra</p>
+        <p>Shatabhisha = &#30334;&#37291;&#65292;&#30001; Rahu &#25484;&#31649;</p>
+        <p style="margin-top:4px;color:var(--accent3);">&#30274;&#30290;&#33258;&#25105;&#33287;&#20182;&#20154;&#26159;&#38728;&#24615;&#36947;&#36335;&#30340;&#26680;&#24515;</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 14: YEARLY PREDICTIONS ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F52D;</span>
+    <h2>2025-2030 &#27969;&#24180;&#20998;&#26512;<span class="en">Yearly Predictions with Dasha Analysis</span></h2>
+  </div>
+  <div class="section-body">
+
+    <!-- Visual Year Timeline -->
+    <div class="year-timeline">
+      <div class="year-block" style="background:rgba(239,68,68,0.1);border-color:var(--fire);">
+        <h4 style="color:var(--fire);">2025</h4>
+        <p>Sa&rarr;Me &#36681;&#25563;!</p>
+        <p>&#26368;&#38364;&#37749;&#24180;</p>
+      </div>
+      <div class="year-block" style="background:rgba(56,189,248,0.1);border-color:var(--air);">
+        <h4 style="color:var(--air);">2026</h4>
+        <p>Me/Me</p>
+        <p>&#26032;&#38283;&#22987;</p>
+      </div>
+      <div class="year-block" style="background:rgba(99,102,241,0.1);border-color:var(--water);">
+        <h4 style="color:var(--water);">2027</h4>
+        <p>Me/Me&rarr;Me/Ke</p>
+        <p>&#31337;&#22266;&#26399;</p>
+      </div>
+      <div class="year-block" style="background:rgba(132,204,22,0.1);border-color:var(--earth);">
+        <h4 style="color:var(--earth);">2028</h4>
+        <p>Me/Ke</p>
+        <p>&#38728;&#24615;&#35258;&#37266;</p>
+      </div>
+      <div class="year-block" style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(139,92,246,0.15));border-color:var(--accent);">
+        <h4 style="color:var(--accent);">2029 &#9733;</h4>
+        <p>Me/Ve</p>
+        <p>&#26368;&#32654;&#22909;&#24180;!</p>
+      </div>
+      <div class="year-block" style="background:linear-gradient(135deg,rgba(245,158,11,0.15),rgba(139,92,246,0.15));border-color:var(--accent);">
+        <h4 style="color:var(--accent);">2030 &#9733;</h4>
+        <p>Me/Ve</p>
+        <p>&#25345;&#32396;&#32187;&#25918;!</p>
+      </div>
+    </div>
+
+    <!-- 2025 -->
+    <div class="year-card" style="border: 2px solid var(--warn);background:linear-gradient(135deg,rgba(239,68,68,0.05),rgba(245,158,11,0.05));">
+      <h3><span class="badge badge-red" style="font-size:1em;padding:5px 14px;">2025 &#9888; &#26368;&#38364;&#37749;&#24180;</span> Saturn Maha Dasha &#32080;&#26463; &rarr; Mercury Maha Dasha &#38283;&#22987;</h3>
+      <p style="color:var(--warn);margin-bottom:12px;font-weight:600;">&#19977;&#22823;&#37325;&#30090;&#65306;19&#24180;Saturn&#22823;&#36939;&#32080;&#26463; + Peak Sade Sati + 17&#24180;Mercury&#22823;&#36939;&#38283;&#22987;</p>
+      <div class="sub-period"><span class="period-label">Jan-Mar 2025: Sa/Ju/Mo</span><p>&#26234;&#24935;&#33287;&#24773;&#32210;&#24179;&#34913;&#65292;Raja Yoga&#30340;&#26408;&#26143;&#23376;&#26399;&#23614;&#32882;</p></div>
+      <div class="sub-period"><span class="period-label">Mar-May 2025: Sa/Ju/Ma</span><p>&#28779;&#26143;&#28608;&#27963;&#34892;&#21205;&#21147;&#65292;&#20294;Manglik&#33021;&#37327;&#38656;&#35641;&#24910;</p></div>
+      <div class="sub-period"><span class="period-label">May-Sep 2025: Sa/Ju/Ra</span><p>Rahu&#24118;&#20358;&#24847;&#22806;&#35722;&#21270;&#65292;Saturn&#22823;&#36939;&#30340;&#26368;&#24460;&#25361;&#25136;</p></div>
+      <div class="sub-period" style="border-left-color:var(--accent);background:rgba(245,158,11,0.08);"><span class="period-label" style="color:var(--accent);">Sep 29, 2025: &#37325;&#22823;&#36681;&#25563; &rarr; Mercury/Mercury/Mercury &#38283;&#22987;!</span><p>17&#24180;&#30340;Mercury&#22823;&#36939;&#27491;&#24335;&#21855;&#21205;&#65281;&#28317;&#36890;&#12289;&#26234;&#24935;&#12289;&#21830;&#26989;&#33021;&#37327;&#20840;&#38754;&#28608;&#27963;&#12290;</p></div>
+      <p style="color:var(--accent3);margin-top:12px;font-size:0.9em;"><strong>Transit:</strong> Saturn &#22312; Aquarius&#65288;&#31532;1&#23470;! &#22312;&#26376;&#20142;&#19978;&#65289;= Peak Sade Sati&#12290;Jupiter &#24478;Cancer(6th)&#36681;&#21040;Leo(7th) = &#20811;&#26381;&#38556;&#31001;&#65292;&#28982;&#24460;&#21512;&#22821;&#38364;&#20418;&#25844;&#23637;&#12290;</p>
+    </div>
+
+    <!-- 2026 -->
+    <div class="year-card">
+      <h3><span class="badge badge-cyan" style="font-size:1em;padding:5px 14px;">2026</span> Mercury/Mercury &#32020;Mercury&#33021;&#37327;&#26399;</h3>
+      <p style="color:var(--muted);margin-bottom:12px;">&#32020;&#31929;&#30340;Mercury&#33021;&#37327; &mdash; &#28317;&#36890;&#12289;&#23416;&#32722;&#12289;&#21830;&#26989;&#12289;&#20998;&#26512;&#12290;Mercury&#25484;&#31649;5th(&#21109;&#36896;&#21147;)&#21644;8th(&#35722;&#21270;)&#12290;Sade Sati&#32380;&#32396;&#65288;Saturn in Pisces, 2nd&#65289;&#8212; &#36001;&#21209;&#22739;&#21147;&#12290;</p>
+      <div class="sub-period"><span class="period-label">Jan 2026: Me/Me/Ke</span><p>Ketu&#24118;&#20358;&#30701;&#26242;&#30340;&#38728;&#24615;&#35258;&#23519;</p></div>
+      <div class="sub-period"><span class="period-label">Mar-Aug 2026: Me/Me/Ve</span><p>Venus&#65288;&#26368;&#24375;&#34892;&#26143;!&#65289;&#23376;&#26399; &mdash; &#34269;&#34899;&#12289;&#32654;&#24863;&#12289;&#23478;&#24237;&#24184;&#31119;&#30340;&#22909;&#26178;&#26399;</p></div>
+      <div class="sub-period"><span class="period-label">Sep-Dec 2026: Me/Me/Su &#8594; Me/Me/Mo</span><p>&#22826;&#38525;&#28608;&#27963;&#31532;5&#23470;&#21109;&#36896;&#21147;&#65292;&#26376;&#20142;&#24118;&#20358;&#24773;&#32210;&#28145;&#24230;</p></div>
+      <p style="color:var(--accent3);margin-top:12px;font-size:0.9em;"><strong>Transit:</strong> Jupiter &#22312; Sagittarius&#65288;&#31532;11&#23470;!&#65289;= &#25910;&#30410;&#33287;&#39000;&#26395;&#23526;&#29694;&#65281;&#36889;&#26159;2026&#24180;&#26368;&#22823;&#30340;&#21033;&#22909;&#12290;</p>
+    </div>
+
+    <!-- 2027 -->
+    <div class="year-card">
+      <h3><span class="badge badge-purple" style="font-size:1em;padding:5px 14px;">2027</span> Mercury/Mercury &rarr; Mercury/Ketu &#36681;&#25563;</h3>
+      <p style="color:var(--muted);margin-bottom:12px;">&#21069;&#21322;&#24180;Me/Me&#32380;&#32396;&#65292;&#24460;&#21322;&#24180;&#36681;&#20837;Me/Ke&#12290;Sade Sati&#36001;&#21209;&#22739;&#21147;&#25345;&#32396;&#12290;</p>
+      <div class="sub-period"><span class="period-label">Feb-Jun 2027: Me/Me/Ra</span><p>Rahu&#24118;&#20358;&#38750;&#20659;&#32113;&#27231;&#26371;&#65292;&#22806;&#22283;&#36899;&#32080;</p></div>
+      <div class="sub-period"><span class="period-label">Jun-Oct 2027: Me/Me/Ju</span><p>Jupiter&#23376;&#26399; &mdash; &#26234;&#24935;&#25844;&#23637;&#65292;&#23416;&#32722;&#30340;&#22909;&#26178;&#26399;</p></div>
+      <div class="sub-period" style="border-left-color:var(--accent);"><span class="period-label" style="color:var(--accent);">Feb 2028: Mercury/Ketu &#38283;&#22987;</span><p>Ketu&#65288;&#31532;12&#23470;&#65289;&#24118;&#20358;&#38728;&#24615;&#35258;&#37266;&#33287;&#36229;&#33067;</p></div>
+      <p style="color:var(--accent3);margin-top:12px;font-size:0.9em;"><strong>Transit:</strong> Jupiter &#22312; Leo&#65288;7th&#65289;= &#21512;&#22821;/&#23130;&#23035;&#25844;&#23637;&#12290;Rahu &#36914;&#20837; Capricorn&#65288;12th&#65289;= &#22806;&#22283;&#36899;&#32080;&#12289;&#38728;&#24615;&#39636;&#39511;&#12290;</p>
+    </div>
+
+    <!-- 2028 -->
+    <div class="year-card">
+      <h3><span class="badge badge-green" style="font-size:1em;padding:5px 14px;">2028</span> Mercury/Ketu &#38728;&#24615;&#35258;&#37266;&#26399;</h3>
+      <p style="color:var(--muted);margin-bottom:12px;">Ketu&#23376;&#26399;&#65288;Feb 2028 - Feb 2029&#65289;&mdash; &#38728;&#24615;&#35258;&#37266;&#12289;&#36229;&#33067;&#12289;&#25918;&#19979;&#12290;Sade Sati&#26368;&#24460;&#38542;&#27573;&#12290;</p>
+      <div class="sub-period"><span class="period-label">Feb-Mar 2028: Me/Ke/Ke</span><p>&#24375;&#28872;&#30340;&#38728;&#24615;&#35258;&#37266;&#65292;&#21487;&#33021;&#26371;&#26377;&#21516;&#38627;&#30340;&#32147;&#27511;</p></div>
+      <div class="sub-period"><span class="period-label">Mar 2028+: Me/Ke/Ve</span><p>Venus&#65288;&#26368;&#24375;&#34892;&#26143;&#65289;&#32233;&#35299;Ketu&#30340;&#36229;&#33067;&#65292;&#24118;&#20358;&#32654;&#33287;&#33298;&#36969;</p></div>
+      <p style="color:var(--accent3);margin-top:12px;font-size:0.9em;"><strong>Transit:</strong> Jupiter&#22312;Taurus(4th)&#24460;&#21322;&#24180; = &#23478;&#24237;/&#25151;&#29986;&#20107;&#38917;&#12290;Rahu&#22312;Sagittarius(11th) = &#38750;&#20659;&#32113;&#25910;&#30410;&#12290;</p>
+    </div>
+
+    <!-- 2029 -->
+    <div class="year-card" style="border: 2px solid var(--accent);background:linear-gradient(135deg,rgba(245,158,11,0.05),rgba(139,92,246,0.05));">
+      <h3><span class="badge badge-gold" style="font-size:1.1em;padding:6px 16px;">2029 &#9733; &#26368;&#32654;&#22909;&#24180;</span> Mercury/Venus &mdash; &#26368;&#24375;&#34892;&#26143;&#28608;&#27963;!</h3>
+      <p style="color:var(--accent);margin-bottom:12px;font-weight:600;">Venus&#26159;&#26368;&#24375;&#34892;&#26143;&#65288;Shadbala 1.66x&#65289;&#65292;&#22312;&#33258;&#24231;Taurus&#31532;4&#23470; &mdash; &#23478;&#24237;&#12289;&#22882;&#33775;&#12289;&#33298;&#36969;&#12289;&#34269;&#34899;&#34920;&#29694;&#30340;&#39640;&#23792;&#26399;&#65281;</p>
+      <div class="sub-period" style="border-left-color:var(--accent);background:rgba(245,158,11,0.08);"><span class="period-label" style="color:var(--accent);">Feb 2029: Mercury/Venus &#38283;&#22987; &#9733;</span><p>Venus&#8477; &#33258;&#24231;&#30340;&#20840;&#37096;&#33021;&#37327;&#37323;&#25918;&#65281;&#24859;&#12289;&#32654;&#12289;&#34269;&#34899;&#12289;&#23478;&#24237;&#24184;&#31119;&#30340;&#26368;&#20339;&#26178;&#26399;&#12290;</p></div>
+      <div class="sub-period"><span class="period-label">2029&#19979;&#21322;&#24180;: Me/Ve/Su &#8594; Me/Ve/Mo</span><p>&#22826;&#38525;&#28608;&#27963;&#21109;&#36896;&#21147;&#65292;&#26376;&#20142;&#28145;&#21270;&#24773;&#32210;&#39636;&#39511;</p></div>
+      <p style="color:var(--accent);margin-top:12px;font-size:0.9em;font-weight:600;">&#37325;&#35201;&#65306;Sade Sati &#32080;&#26463;&#65281;Saturn &#36914;&#20837; Aries&#65288;3rd house&#65289;&#65292;&#22739;&#21147;&#37323;&#25918;&#65281;</p>
+      <p style="color:var(--accent3);margin-top:8px;font-size:0.9em;"><strong>Transit:</strong> Jupiter &#22312; Virgo&#65288;8th&#65289;= &#28145;&#23652;&#35722;&#21270;&#12289;&#36986;&#29986;&#12289;&#31070;&#31192;&#30693;&#35672;&#12290;</p>
+    </div>
+
+    <!-- 2030 -->
+    <div class="year-card" style="border-color:var(--accent);">
+      <h3><span class="badge badge-gold" style="font-size:1em;padding:5px 14px;">2030</span> Mercury/Venus &#25345;&#32396; &mdash; &#25844;&#23637;&#33287;&#25910;&#29554;</h3>
+      <p style="color:var(--accent);margin-bottom:12px;font-weight:600;">Venus&#8477;&#33258;&#24231;&#30340;&#33021;&#37327;&#25345;&#32396;&#32187;&#25918;&#65292;&#20839;&#21270;&#30340;&#32654;&#33287;&#33298;&#36969;&#36880;&#28472;&#22806;&#39023;&#12290;</p>
+      <div class="sub-period"><span class="period-label">2030: Me/Ve &#25345;&#32396;</span><p>Mercury+Venus&#30340;&#26368;&#20339;&#32068;&#21512; &mdash; &#28317;&#36890;&#33287;&#32654;&#24863;&#30340;&#23436;&#32654;&#34701;&#21512;</p></div>
+      <p style="color:var(--accent3);margin-top:12px;font-size:0.9em;"><strong>Transit:</strong> Saturn &#36914;&#20837; Taurus&#65288;4th&#65289;= &#23478;&#24237;&#31337;&#22266;&#12290;Jupiter &#22312; Gemini&#65288;5th&#65289;= &#21109;&#36896;&#21147;&#33287;&#23376;&#22899;&#30340;&#31069;&#31119;&#12290;Rahu &#22312; Scorpio&#65288;10th!&#65289;= &#38750;&#20659;&#32113;&#20107;&#26989;&#27231;&#26371;&#65281;</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ SECTION 15: VIMSOTTARI DASHA ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F30A;</span>
+    <h2>Vimsottari Dasha &#32173;&#22982;&#33293;&#22612;&#21033;&#22823;&#36939;<span class="en">Planetary Period System</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-planet">&#9738; Rahu Maha Dasha&#65288;1972-09 to 1990-09&#65289;</div>
+        <div class="tl-period">18&#24180; &mdash; &#31461;&#24180;&#33287;&#38738;&#23569;&#24180;&#26399;</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--muted);"></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-planet">&#9795; Jupiter Maha Dasha&#65288;1990-09 to 2006-09&#65289;</div>
+        <div class="tl-period">16&#24180; &mdash; &#25104;&#24180;&#25104;&#38263;&#26399;</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:100%;background:var(--muted);"></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-planet">&#9796; Saturn Maha Dasha&#65288;2006-09 to 2025-09&#65289;&mdash; &#21363;&#23559;&#32080;&#26463;!</div>
+        <div class="tl-period">19&#24180; &mdash; &#32000;&#24459;&#12289;&#36012;&#20219;&#12289;&#25104;&#29087;&#30340;&#28459;&#38263;&#26399;&#38291;</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:98%;background:linear-gradient(90deg,#6366f1,#f59e0b);"></div></div>
+      </div>
+      <div class="tl-item current">
+        <div class="tl-planet">&#9791; Mercury Maha Dasha&#65288;2025-09 to 2042-09&#65289;&mdash; &#38283;&#22987;!</div>
+        <div class="tl-period">17&#24180; &mdash; &#28317;&#36890;&#12289;&#26234;&#24935;&#12289;&#21830;&#26989;&#12289;&#23416;&#32722;&#30340;&#26032;&#31456;</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:5%;background:linear-gradient(90deg,#22c55e,#4ade80);"></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-planet">&#9739; Ketu Maha Dasha&#65288;2042-09 to 2049-09&#65289;</div>
+        <div class="tl-period">7&#24180; &mdash; &#38728;&#24615;&#35299;&#33067;</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--muted);"></div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-planet">&#9792; Venus Maha Dasha&#65288;2049-09 to 2069-09&#65289;</div>
+        <div class="tl-period">20&#24180; &mdash; &#26368;&#24375;&#34892;&#26143;&#30340;&#40643;&#37329;&#26399;</div>
+        <div class="progress-bar"><div class="progress-fill" style="width:0%;background:var(--muted);"></div></div>
+      </div>
+    </div>
+
+    <div class="analysis-block" style="margin-top:20px;">
+      <h4>Mercury Maha Dasha Pratyantardasha &#35443;&#32048;&#26178;&#31243;&#34920;&#65288;2025-2031&#65289;</h4>
+      <table>
+        <tr><th>Period</th><th>Start</th><th>End</th><th>&#37325;&#40670;</th></tr>
+        <tr class="highlight-row"><td>Me/Me/Me</td><td>2025-09-29</td><td>2026-01-31</td><td><span class="badge badge-gold">Mercury &#22823;&#36939;&#38283;&#22987;!</span></td></tr>
+        <tr><td>Me/Me/Ke</td><td>2026-01-31</td><td>2026-03-24</td><td>&#38728;&#24615;&#30701;&#26399;&#35258;&#23519;</td></tr>
+        <tr><td>Me/Me/Ve</td><td>2026-03-24</td><td>2026-08-17</td><td><span class="badge badge-green">&#26368;&#24375;&#34892;&#26143;&#23376;&#26399;</span></td></tr>
+        <tr><td>Me/Me/Su</td><td>2026-08-17</td><td>2026-09-30</td><td>&#21109;&#36896;&#21147;&#28608;&#27963;</td></tr>
+        <tr><td>Me/Me/Mo</td><td>2026-09-30</td><td>2026-12-12</td><td>&#24773;&#32210;&#28145;&#24230;</td></tr>
+        <tr><td>Me/Me/Ma</td><td>2026-12-12</td><td>2027-02-02</td><td>&#34892;&#21205;&#21147;&#28608;&#27963;</td></tr>
+        <tr><td>Me/Me/Ra</td><td>2027-02-02</td><td>2027-06-14</td><td>&#38750;&#20659;&#32113;&#27231;&#26371;</td></tr>
+        <tr><td>Me/Me/Ju</td><td>2027-06-14</td><td>2027-10-09</td><td>&#26234;&#24935;&#25844;&#23637;</td></tr>
+        <tr><td>Me/Me/Sa</td><td>2027-10-09</td><td>2028-02-25</td><td>&#32000;&#24459;&#33287;&#32080;&#27083;</td></tr>
+        <tr><td>Me/Ke/Ke</td><td>2028-02-25</td><td>2028-03-17</td><td>Ketu&#23376;&#26399;&#38283;&#22987;</td></tr>
+        <tr><td>Me/Ke/Ve</td><td>2028-03-17</td><td>2029-02-22</td><td>Venus&#33021;&#37327;&#32233;&#35299;&#36229;&#33067;</td></tr>
+        <tr class="highlight-row"><td>Me/Ve/Ve</td><td>2029-02-22</td><td>2029-08-13</td><td><span class="badge badge-gold">Venus&#23376;&#26399;&#38283;&#22987; &#9733;</span></td></tr>
+        <tr><td>Me/Ve/Su</td><td>2029-08-13</td><td>2030+</td><td>&#21109;&#36896;&#21147;+&#32654;&#24863;&#34701;&#21512;</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 16: EXPANDED REMEDIES ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F48E;</span>
+    <h2>&#20840;&#38754;&#35036;&#25937;&#26041;&#26696;<span class="en">Comprehensive Remedies (PVR System)</span></h2>
+  </div>
+  <div class="section-body">
+
+    <!-- A. Planetary Remedies -->
+    <h3 style="color:var(--accent);margin-bottom:16px;">A. &#34892;&#26143;&#35036;&#25937; Planetary Remedies</h3>
+    <div class="grid-2">
+      <div class="remedy-card" style="border-left-color:var(--fire);">
+        <h4 style="color:var(--fire);">&#9794; Mars &#28779;&#26143;&#65288;&#26368;&#24369; 0.88x, Manglik Dosha&#65289;</h4>
+        <ul>
+          <li><strong>&#21650;&#35486;&#65306;</strong>"Om Kram Kreem Kroum Sah Bhaumaya Namah" &mdash; &#27599;&#26085;108&#36941;&#65292;&#23588;&#20854;&#36913;&#20108;</li>
+          <li><strong>&#31070;&#26126;&#65306;</strong>Narasimha / Hanuman&#65288;&#28779;&#26143;&#20195;&#34920;&#65289;</li>
+          <li><strong>&#35036;&#25937;&#65306;</strong>&#9888; Mars&#22312;&#31532;8&#23470;&#65288;&#20982;&#23470;&#65289;&#65292;&#25140;Red Coral&#21487;&#33021;&#25844;&#22823;&#36000;&#38754;&#25928;&#26524;&#12290;&#24314;&#35696;&#20197;&#21650;&#35486;&#21644;&#24067;&#26045;&#20195;&#26367;&#23542;&#30707;</li>
+          <li><strong>&#24067;&#26045;&#65306;</strong>&#36913;&#20108;&#25424;&#32005;&#25153;&#35910;&#12289;&#32005;&#24067;</li>
+          <li><strong>Manglik&#29305;&#21029;&#35036;&#25937;&#65306;</strong>Kumbh Vivah&#65288;&#35937;&#24501;&#24615;&#23130;&#31150;&#65289;&#65292;&#36913;&#20108;&#23815;&#25308;Hanuman</li>
+        </ul>
+      </div>
+      <div class="remedy-card" style="border-left-color:var(--good);">
+        <h4 style="color:var(--good);">&#9791; Mercury &#27700;&#26143;&#65288;&#26032;Maha Dasha&#20027;! &#36870;&#34892;&#65289;</h4>
+        <ul>
+          <li><strong>&#23542;&#30707;&#65306;</strong>Emerald&#65288;Panna &#32160;&#23542;&#30707;&#65289;&mdash; &#23567;&#25351;&#65292;&#36913;&#19977;&#37197;&#25140;</li>
+          <li><strong>&#21650;&#35486;&#65306;</strong>"Om Bram Breem Broum Sah Budhaya Namah" &mdash; &#27599;&#26085;108&#36941;</li>
+          <li><strong>&#31070;&#26126;&#65306;</strong>Vishnu&#65288;Mercury = Buddha Avatara&#65289;</li>
+          <li><strong>&#24067;&#26045;&#65306;</strong>&#36913;&#19977;&#25424;&#32160;&#33394;&#29289;&#21697;</li>
+          <li><strong>&#29305;&#21029;&#27880;&#24847;&#65306;</strong>Mercury&#36870;&#34892; = &#22865;&#32004;&#12289;&#28317;&#36890;&#12289;&#26053;&#34892;&#38656;&#38989;&#22806;&#35641;&#24910;</li>
+          <li><strong>&#20986;&#29983;&#26085;&#36899;&#32080;</strong>&#65306;&#29983;&#26044;&#27700;&#26143;&#26085;&#65288;Wednesday&#65289;= &#33287;Mercury&#26377;&#22825;&#29983;&#32879;&#32363;</li>
+        </ul>
+      </div>
+      <div class="remedy-card" style="border-left-color:var(--water);">
+        <h4 style="color:var(--water);">&#9796; Saturn &#22303;&#26143;&#65288;Lagna Lord, Sade Sati &#20013;&#65289;</h4>
+        <ul>
+          <li><strong>&#21650;&#35486;&#65306;</strong>"Om Pram Preem Proum Sah Shanaischaraya Namah" &mdash; &#36913;&#20845;108&#36941;</li>
+          <li><strong>&#24067;&#26045;&#65306;</strong>&#36913;&#20845;&#25424;&#40657;&#33437;&#40635;&#12289;&#33445;&#33756;&#27833;&#12289;&#37941;&#22120;</li>
+          <li><strong>&#26381;&#21209;&#65306;</strong>&#39221;&#39135;&#27544;&#38556;/&#32769;&#24180;&#20154;</li>
+          <li><strong>&#26039;&#39135;&#65306;</strong>&#36913;&#20845;&#26039;&#39135;</li>
+          <li><strong>&#9888; &#19981;&#35201;&#22312;Sade Sati&#26399;&#38291;&#25140;Blue Sapphire</strong>&#65292;&#38500;&#38750;&#23560;&#23478;&#24314;&#35696;</li>
+        </ul>
+      </div>
+      <div class="remedy-card" style="border-left-color:#e2e8f0;">
+        <h4 style="color:#e2e8f0;">&#9790; Moon &#26376;&#20142;&#65288;Lagna&#20276;&#26143;, &#31245;&#24369; 0.97x&#65289;</h4>
+        <ul>
+          <li><strong>&#23542;&#30707;&#65306;</strong>Pearl&#65288;Moti &#29645;&#29664;&#65289;&mdash; &#24038;&#25163;&#28961;&#21517;&#25351;&#65292;&#36913;&#19968;&#37197;&#25140; <span class="badge badge-green">&#25512;&#34214;</span></li>
+          <li><strong>&#21650;&#35486;&#65306;</strong>"Om Shram Shreem Shroum Sah Chandraya Namah"</li>
+          <li><strong>&#24067;&#26045;&#65306;</strong>&#36913;&#19968;&#25424;&#30333;&#31859;&#12289;&#29275;&#22902;&#12289;&#30333;&#33457;</li>
+          <li><strong>&#31070;&#26126;&#65306;</strong>Parvati / Lalitha Tripura Sundari</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- B. Manglik Dosha Remedies -->
+    <h3 style="color:var(--accent);margin:24px 0 16px;border-top:1px solid var(--border);padding-top:20px;">B. Manglik Dosha &#35036;&#25937;&#65288;&#23130;&#23035;&#24433;&#38911;&#65289;</h3>
+    <div class="remedy-card" style="border-left-color:var(--warn);">
+      <h4 style="color:var(--warn);">&#28779;&#26143;&#32570;&#38519;&#23130;&#23035;&#35036;&#25937;</h4>
+      <ul>
+        <li><strong>Kumbh Vivah</strong>&#65306;&#22312;&#23526;&#38555;&#23130;&#23035;&#21069;&#33287;&#29942;&#23376;/&#27193;&#26408;&#33289;&#34892;&#35937;&#24501;&#24615;&#23130;&#31150;</li>
+        <li>&#27599;&#36913;&#20108;&#23815;&#25308; <strong>Hanuman</strong>&#65292;&#35494;&#35712; Hanuman Chalisa</li>
+        <li>&#22914;&#26524;&#33287;&#21478;&#19968;&#20301;Manglik&#32080;&#23130;&#65292;Dosha &#21487;&#20197;&#25269;&#28040;</li>
+        <li>&#22312;&#23546;&#24287;&#36914;&#34892; Mars &#30340;&#29305;&#21029;&#27861;&#26371;&#65288;Puja&#65289;</li>
+        <li>&#36913;&#20108;&#26039;&#39135;&#25110;&#21482;&#21507;&#32032;&#39135;</li>
+      </ul>
+    </div>
+
+    <!-- C. Pitru Dosha Remedies -->
+    <h3 style="color:var(--accent);margin:24px 0 16px;border-top:1px solid var(--border);padding-top:20px;">C. Pitru Dosha &#35036;&#25937;&#65288;&#31062;&#20808;&#26989;&#21147;&#65289;</h3>
+    <div class="remedy-card" style="border-left-color:var(--warn);">
+      <h4 style="color:var(--warn);">&#31062;&#20808;&#26989;&#21147;&#28136;&#21270;</h4>
+      <ul>
+        <li>&#27599;&#26376; <strong>Amavasya</strong>&#65288;&#26032;&#26376;&#65289;&#34892; <strong>Tarpana</strong>&#65288;&#27700;&#20379;&#31062;&#20808;&#65289;&#20736;&#24335;</li>
+        <li>Shraddha &#20736;&#24335; &mdash; &#31062;&#20808;&#32000;&#24565;&#20736;&#24335;</li>
+        <li>&#27599;&#26085;&#39221;&#39135;&#28879;&#40201;&#65288;Pitru &#20379;&#21697;&#20659;&#36958;&#32773;&#65289;</li>
+        <li>&#25424;&#39135;&#32102;&#23110;&#32645;&#38272;</li>
+        <li>&#31278;&#26893;&#33769;&#25552;&#27193;&#65288;Peepal tree&#65289;&#20006;&#24713;&#24515;&#29031;&#26009;</li>
+      </ul>
+    </div>
+
+    <!-- D. Sade Sati Remedies -->
+    <h3 style="color:var(--accent);margin:24px 0 16px;border-top:1px solid var(--border);padding-top:20px;">D. Sade Sati &#35036;&#25937;&#65288;2025-2028 &#38364;&#37749;&#26399;&#65289;</h3>
+    <div class="remedy-card" style="border-left-color:var(--accent2);">
+      <h4 style="color:var(--accent2);">&#22303;&#26143;&#22823;&#36939;&#35036;&#25937;&#65288;&#33267;&#38364;&#37325;&#35201;&#65289;</h4>
+      <ul>
+        <li>&#27599;&#26085;&#35494;&#35712; <strong>Hanuman Chalisa</strong></li>
+        <li>&#36913;&#20845;&#40670;&#33437;&#40635;&#27833;&#29128;</li>
+        <li>&#25424;&#36104;&#32102;&#32769;&#24180;&#38498;</li>
+        <li>&#22312;&#20013;&#25351;&#25140;&#37941;&#25106;&#25351;&#65288;Saturn&#30340;&#25163;&#25351;&#65289;</li>
+        <li><strong>2025&#24180;&#19981;&#35201;&#38283;&#22987;&#37325;&#22823;&#26032;&#35336;&#21123;</strong>&#65288;Peak Sade Sati&#65289;</li>
+        <li>&#32244;&#32722;&#32784;&#24515;&#21644;&#25509;&#21463; &mdash; Saturn &#36890;&#36942;&#38480;&#21046;&#20358;&#25945;&#23566;</li>
+      </ul>
+    </div>
+
+    <!-- E. Mantra Shastra -->
+    <h3 style="color:var(--accent);margin:24px 0 16px;border-top:1px solid var(--border);padding-top:20px;">E. Mantra Shastra &#20998;&#26512;&#65288;PVR Lessons 5-6&#65289;</h3>
+    <table>
+      <tr><th>&#21650;&#35486;</th><th>&#32080;&#27083;</th><th>&#23470;&#20301;&#25928;&#26524;</th><th>&#36969;&#29992;&#24615;</th></tr>
+      <tr class="highlight-row">
+        <td><strong>Om Namashivaya</strong></td>
+        <td>1 word, 5 letters &rarr; 1-5-9</td>
+        <td>Self &rarr; Abilities &rarr; Dharma</td>
+        <td><span class="badge badge-gold">PERFECT</span> &#24375;&#21270;1-5-9&#36600;</td>
+      </tr>
+      <tr>
+        <td><strong>Maha Mrityunjaya</strong></td>
+        <td>7 words, 32 letters &rarr; 7-8-9</td>
+        <td>Marriage &rarr; Longevity &rarr; Dharma</td>
+        <td><span class="badge badge-green">Excellent</span> &#20445;&#35703;7th(Raja Yoga)&#21644;8th(Mars)</td>
+      </tr>
+      <tr>
+        <td><strong>Vishnu Sahasranama</strong></td>
+        <td>&mdash;</td>
+        <td>&mdash;</td>
+        <td><span class="badge badge-green">Excellent</span> Mercury Maha Dasha&#23560;&#29992;</td>
+      </tr>
+      <tr>
+        <td><strong>Om Gam Ganapataye Namah</strong></td>
+        <td>&mdash;</td>
+        <td>&#38283;&#22987;&#26032;&#20107;&#26989;</td>
+        <td><span class="badge badge-cyan">Good</span> Ganesha = Ketu&#31070;&#26126;&#65292;&#28136;&#21270;12th</td>
+      </tr>
+    </table>
+
+    <!-- F. Gemstone Summary -->
+    <h3 style="color:var(--accent);margin:24px 0 16px;border-top:1px solid var(--border);padding-top:20px;">F. &#23542;&#30707;&#32317;&#34920; Gemstone Summary</h3>
+    <table>
+      <tr><th>&#23542;&#30707;</th><th>&#34892;&#26143;</th><th>&#25163;&#25351;</th><th>&#26085;&#26399;</th><th>&#24314;&#35696;</th><th>&#21407;&#22240;</th></tr>
+      <tr>
+        <td>Pearl &#29645;&#29664;</td><td><span class="p-moon">&#9790; Moon</span></td><td>&#24038;&#25163;&#28961;&#21517;&#25351;</td><td>Monday</td>
+        <td><span class="badge badge-green">&#10004; YES</span></td><td>Lagna &#20276;&#26143;&#65292;&#31245;&#24369;&#38656;&#35036;&#24375;</td>
+      </tr>
+      <tr>
+        <td>Emerald &#32160;&#23542;&#30707;</td><td><span class="p-merc">&#9791; Mercury</span></td><td>&#23567;&#25351;</td><td>Wednesday</td>
+        <td><span class="badge badge-green">&#10004; YES</span></td><td>&#26032;Maha Dasha&#20027;&#65292;&#24375;&#21270;&#27700;&#26143;&#33021;&#37327;</td>
+      </tr>
+      <tr>
+        <td>Red Coral &#32005;&#29642;&#29786;</td><td><span class="p-mars">&#9794; Mars</span></td><td>&#21491;&#25163;&#28961;&#21517;&#25351;</td><td>Tuesday</td>
+        <td><span class="badge badge-red">&#9888; NO</span></td><td>Mars&#22312;8th&#65288;&#20982;&#23470;&#65289;&#65292;&#21487;&#33021;&#25844;&#22823;&#36000;&#38754;&#25928;&#26524;</td>
+      </tr>
+      <tr>
+        <td>Blue Sapphire &#34253;&#23542;&#30707;</td><td><span class="p-sat">&#9796; Saturn</span></td><td>&#20013;&#25351;</td><td>Saturday</td>
+        <td><span class="badge badge-red">&#9888; NO</span></td><td>Sade Sati&#26399;&#38291;&#19981;&#24314;&#35696;</td>
+      </tr>
+    </table>
+
+    <!-- G. D-30 Health -->
+    <h3 style="color:var(--accent);margin:24px 0 16px;border-top:1px solid var(--border);padding-top:20px;">G. D-30 &#20581;&#24247;&#35036;&#25937;&#65288;&#22522;&#26044;&#24369;&#40670;&#30436;&#65289;</h3>
+    <div class="remedy-card" style="border-left-color:var(--accent3);">
+      <h4 style="color:var(--accent3);">Jupiter (Akasha/&#31354;&#20803;&#32032;) &#20027;&#23566;</h4>
+      <ul>
+        <li>D-30 Lagna = Sagittarius with Moon+Jupiter = Jupiter&#65288;&#31354;&#20803;&#32032;&#65289;&#20027;&#23566;</li>
+        <li>Mars+Mercury&#8477; in Taurus = &#22320;&#20803;&#32032;&#24369;&#40670;</li>
+        <li><strong>&#28040;&#21270;&#31995;&#32113;</strong>&#65288;Mars&#22312;&#22303;&#20803;&#32032;&#65289;&#38656;&#27880;&#24847;</li>
+        <li><strong>&#31070;&#32147;&#31995;&#32113;</strong>&#65288;Mercury&#36870;&#34892;&#65289;&#38656;&#29031;&#39015;</li>
+        <li>&#32173;&#25345;&#35215;&#24459;&#20316;&#24687;&#65292;&#36991;&#20813;&#24515;&#26234;&#36942;&#24230;&#21214;&#32047;</li>
+        <li>&#35215;&#24459;&#20912;&#24819;&#20197;&#24179;&#38748;&#24515;&#26234;</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 17: SADE SATI ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#9796;</span>
+    <h2>Sade Sati &#22303;&#26143;&#22823;&#36939;&#27298;&#26597;<span class="en">7.5 Year Saturn Transit Check</span></h2>
+  </div>
+  <div class="section-body">
+    <div class="analysis-block" style="border-color:var(--warn);">
+      <h4 style="color:var(--warn);">&#9888; 2025-2028 Sade Sati ACTIVE&#65281;&#65288;&#38364;&#37749;&#30332;&#29694;&#65289;</h4>
+      <ul>
+        <li>&#20986;&#29983;&#26376;&#20142;&#22312; <strong>Aquarius</strong>&#65288;&#27700;&#29942;&#24231;&#65289;</li>
+        <li><strong>2025</strong>&#65306;Saturn &#22312; Aquarius&#65288;&#33287;&#26376;&#20142;&#21516;&#23470;!&#65289;= <span class="badge badge-red">Peak Sade Sati &#24040;&#23792;!</span></li>
+        <li><strong>2026-2028</strong>&#65306;Saturn &#22312; Pisces&#65288;&#26376;&#20142;&#24460;1&#23470;&#65289;= Sade Sati &#26368;&#24460;&#38542;&#27573;&#65292;&#36001;&#21209;&#22739;&#21147;</li>
+        <li><strong>2029+</strong>&#65306;Saturn &#36914;&#20837; Aries &rarr; <span class="badge badge-green">Sade Sati &#32080;&#26463;!</span></li>
+        <li>&#22739;&#21147;&#26368;&#22823;&#30340;&#38936;&#22495;&#65306;&#24773;&#32210;&#12289;&#36523;&#39636;&#12289;&#33258;&#25105;&#35469;&#21516;&#65288;1st house = &#33258;&#25105;&#65289;</li>
+      </ul>
+    </div>
+    <div style="margin-top:16px;">
+      <table>
+        <tr><th>&#26178;&#26399;</th><th>Saturn &#20301;&#32622;</th><th>&#33287;&#26376;&#20142;&#38364;&#20418;</th><th>&#24433;&#38911;&#31243;&#24230;</th></tr>
+        <tr class="highlight-row"><td>2025</td><td>Aquarius</td><td>&#21516;&#23470;!</td><td><span class="badge badge-red">PEAK &#24040;&#23792;</span></td></tr>
+        <tr><td>2026</td><td>Pisces</td><td>&#24460;1&#23470;</td><td><span class="badge badge-gold">&#24375;&#28872;</span></td></tr>
+        <tr><td>2027</td><td>Pisces</td><td>&#24460;1&#23470;</td><td><span class="badge badge-gold">&#24375;&#28872;</span></td></tr>
+        <tr><td>2028</td><td>Pisces/Aries</td><td>&#24460;1-2&#23470;</td><td><span class="badge badge-cyan">&#28187;&#24369;</span></td></tr>
+        <tr><td>2029+</td><td>Aries</td><td>&#24460;2&#23470;</td><td><span class="badge badge-green">&#32080;&#26463;</span></td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SECTION 18: TRANSIT ANALYSIS ============ -->
+<div class="section">
+  <div class="section-header">
+    <span class="icon">&#x1F30D;</span>
+    <h2>2025-2030 &#36942;&#22659;&#20998;&#26512;<span class="en">Transit Analysis (6-month intervals)</span></h2>
+  </div>
+  <div class="section-body">
+    <p style="color:var(--muted);margin-bottom:16px;font-size:0.9em;">&#30456;&#23565;&#26044;&#20986;&#29983;&#26376;&#20142; Aquarius &#21644; Lagna Aquarius &#30340;&#23470;&#20301;&#20998;&#26512;&#12290;</p>
+    <table>
+      <tr><th>&#26085;&#26399;</th><th>Jupiter &#9795;</th><th>&#23470;&#20301;</th><th>Saturn &#9796;</th><th>&#23470;&#20301;</th><th>Rahu &#9738;</th><th>&#23470;&#20301;</th><th>&#37325;&#40670;</th></tr>
+      <tr class="transit-highlight">
+        <td><strong>2025-01</strong></td>
+        <td>Cancer</td><td>H6</td>
+        <td>Aquarius</td><td><span class="badge badge-red">H1!</span></td>
+        <td>Pisces</td><td>H2</td>
+        <td style="color:var(--warn);">Saturn &#22312; Lagna = Peak Sade Sati!</td>
+      </tr>
+      <tr class="transit-highlight">
+        <td><strong>2025-07</strong></td>
+        <td>Leo</td><td><span class="badge badge-gold">H7!</span></td>
+        <td>Pisces</td><td>H2</td>
+        <td>Aquarius</td><td><span class="badge badge-red">H1!</span></td>
+        <td style="color:var(--accent);">Jupiter &#36914;&#20837; Raja Yoga &#23470;&#20301;!</td>
+      </tr>
+      <tr>
+        <td>2026-01</td>
+        <td>Sagittarius</td><td><span class="badge badge-gold">H11!</span></td>
+        <td>Pisces</td><td>H2</td>
+        <td>Aquarius</td><td>H1</td>
+        <td style="color:var(--accent);">Jupiter &#22312;&#31532;11&#23470; = &#25910;&#30410;&#33287;&#39000;&#26395;</td>
+      </tr>
+      <tr>
+        <td>2026-07</td>
+        <td>Taurus</td><td>H4</td>
+        <td>Pisces</td><td>H2</td>
+        <td>Aquarius</td><td>H1</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2027-01</td>
+        <td>Leo</td><td><span class="badge badge-gold">H7!</span></td>
+        <td>Pisces</td><td>H2</td>
+        <td>Capricorn</td><td>H12</td>
+        <td></td>
+      </tr>
+      <tr class="transit-highlight">
+        <td><strong>2027-07</strong></td>
+        <td>Leo</td><td>H7</td>
+        <td>Aries</td><td><span class="badge badge-cyan">H3</span></td>
+        <td>Capricorn</td><td>H12</td>
+        <td style="color:var(--accent3);">Saturn &#36914;&#20837;&#31532;3&#23470; = &#21191;&#27683;&#32771;&#39511;</td>
+      </tr>
+      <tr>
+        <td>2028-01</td>
+        <td>Capricorn</td><td>H12</td>
+        <td>Pisces</td><td>H2</td>
+        <td>Capricorn</td><td>H12</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>2028-07</td>
+        <td>Taurus</td><td>H4</td>
+        <td>Aries</td><td>H3</td>
+        <td>Sagittarius</td><td><span class="badge badge-gold">H11!</span></td>
+        <td style="color:var(--accent);">Rahu &#22312;&#31532;11&#23470; = &#38750;&#20659;&#32113;&#25910;&#30410;</td>
+      </tr>
+      <tr class="transit-highlight">
+        <td><strong>2029-01</strong></td>
+        <td>Virgo</td><td>H8</td>
+        <td>Aries</td><td>H3</td>
+        <td>Sagittarius</td><td>H11</td>
+        <td style="color:var(--good);">Sade Sati &#32080;&#26463;! &#22739;&#21147;&#37323;&#25918;</td>
+      </tr>
+      <tr class="transit-highlight">
+        <td><strong>2029-07</strong></td>
+        <td>Virgo</td><td>H8</td>
+        <td>Aries</td><td>H3</td>
+        <td>Sagittarius</td><td>H11</td>
+        <td style="color:var(--good);">Me/Ve &#26399;&#38291; + &#28961;Sade Sati = &#26368;&#32654;&#22909;&#26178;&#26399;</td>
+      </tr>
+      <tr>
+        <td>2030-01</td>
+        <td>Capricorn</td><td>H12</td>
+        <td>Aries</td><td>H3</td>
+        <td>Sagittarius</td><td>H11</td>
+        <td></td>
+      </tr>
+      <tr class="transit-highlight">
+        <td><strong>2030-07</strong></td>
+        <td>Gemini</td><td><span class="badge badge-gold">H5!</span></td>
+        <td>Taurus</td><td><span class="badge badge-green">H4</span></td>
+        <td>Scorpio</td><td><span class="badge badge-gold">H10!</span></td>
+        <td style="color:var(--accent);">&#19977;&#39636;&#21033;&#22909;: Ju(5th)+Sa(4th)+Ra(10th)</td>
+      </tr>
+    </table>
+
+    <div class="analysis-block" style="margin-top:20px;">
+      <h4>&#37325;&#22823;&#36942;&#22659;&#20107;&#20214;&#32317;&#32080;</h4>
+      <ul>
+        <li><strong>2025</strong>&#65306;Saturn &#22312; Aquarius&#65288;H1&#65289;= Peak Sade Sati &mdash; &#26368;&#22823;&#22739;&#21147;&#20294;&#20063;&#26159;&#26368;&#22823;&#25104;&#38263;</li>
+        <li><strong>2025&#19979;&#21322;&#24180;</strong>&#65306;Jupiter &#36914;&#20837; Leo&#65288;H7&#65289;= &#36942;&#22659;&#28608;&#27963; Raja Yoga &#23470;&#20301;!</li>
+        <li><strong>2026&#21021;</strong>&#65306;Jupiter &#22312; Sagittarius&#65288;H11&#65289;= &#25910;&#30410;&#33287;&#39000;&#26395;&#23526;&#29694;&#30340;&#26368;&#20339;&#26178;&#27231;</li>
+        <li><strong>2029</strong>&#65306;Sade Sati &#32080;&#26463; + Me/Ve &#38283;&#22987; = &#20154;&#29983;&#36681;&#25240;&#40670;</li>
+        <li><strong>2030&#19979;&#21322;&#24180;</strong>&#65306;Jupiter(5th) + Saturn(4th) + Rahu(10th) = &#21109;&#36896;&#21147;&#12289;&#23478;&#24237;&#12289;&#20107;&#26989;&#19977;&#39636;&#21033;&#22909;</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FOOTER ============ -->
+<div class="footer">
+  <p>Vedic Astrology Comprehensive Report &mdash; Fiona &mdash; Generated 2026/03/31</p>
+  <p>Based on Parashari &amp; Jaimini Systems with PVR Narasimha Rao's Teaching Framework</p>
+  <p style="margin-top:8px;color:rgba(245,158,11,0.6);">&#9737; &#9790; &#9794; &#9791; &#9795; &#9792; &#9796; &#9738; &#9739;</p>
+  <p style="margin-top:4px;">Ayanamsa: Lahiri | Chart Style: South Indian | Software: PyJHora + Manual Analysis</p>
+</div>
+
+</div><!-- end container -->
 </body>
 </html>
